@@ -1282,10 +1282,7 @@
                     <i class="fa-solid fa-user"></i> Summary
                 </div>
                 <p id="user-summary" contenteditable="false" class="sidebar-summary">
-                    B.Tech Information Technology undergraduate and IIT Madras B.S. Data Science student with strong
-                    foundations in Machine Learning, Data Analysis, Statistics, SQL, and Python. Experienced in
-                    developing AI-powered applications that leverage data processing, natural language processing,
-                    and analytical workflows to solve real-world problems.
+                    B.Tech Information Technology undergraduate and IIT Madras B.S. Data Science student with strong foundations in Machine Learning, Data Science, Statistics, and Software Development. Interested in AI/ML research and full-stack development, with knowledge of Deep Learning, Natural Language Processing, Transformers, and data-driven application development. Skilled in Python, SQL, model development, data analysis, and building end-to-end applications with REST APIs and modern web technologies.
                 </p>
             </div>
 
@@ -1321,6 +1318,8 @@
                     <span class="sidebar-skill-badge">Data Cleaning</span>
                     <span class="sidebar-skill-badge">Feature Engineering</span>
                     <span class="sidebar-skill-badge">Predictive Analytics</span>
+                    <span class="sidebar-skill-badge">Transformers</span>
+                    <span class="sidebar-skill-badge">Natural Language Processing</span>
                 </div>
                 <div class="add-btn-container no-print" style="display:none">
                     <div class="flex">
@@ -1336,6 +1335,8 @@
                     <i class="fa-solid fa-layer-group"></i> Libraries & Frameworks
                 </div>
                 <div class="sidebar-skills skills-list">
+                    <span class="sidebar-skill-badge">HuggingFace</span>
+                    <span class="sidebar-skill-badge">PyTorch</span>
                     <span class="sidebar-skill-badge">Pandas</span>
                     <span class="sidebar-skill-badge">NumPy</span>
                     <span class="sidebar-skill-badge">Matplotlib</span>
@@ -1360,7 +1361,7 @@
                     <i class="fa-solid fa-wrench"></i> Tools & Engineering
                 </div>
                 <div class="sidebar-skills skills-list">
-                    <span class="sidebar-skill-badge">OOP</span>
+                    <span class="sidebar-skill-badge">OOPs</span>
                     <span class="sidebar-skill-badge">DSA</span>
                     <span class="sidebar-skill-badge">REST APIs</span>
                     <span class="sidebar-skill-badge">Git</span>
@@ -1419,22 +1420,28 @@
                     <h2>Education</h2>
                 </div>
 
-                <!-- IIT Madras -->
-                <div class="edu-entry">
-                    <div>
-                        <h3 id="edu1-name" contenteditable="false" class="edu-name">Indian Institute of Technology, Madras</h3>
-                        <p id="edu1-sub" contenteditable="false" class="edu-sub">B.S. Degree in Data Science & Applications</p>
-                    </div>
-                    <span id="edu1-date" contenteditable="false" class="edu-date">2025 - Present (till 2028)</span>
-                </div>
+                
 
                 <!-- MAKAUT -->
                 <div class="edu-entry">
                     <div>
                         <h3 id="edu2-name" contenteditable="false" class="edu-name">Maulana Abul Kalam Azad University of Technology</h3>
-                        <p id="edu2-sub" contenteditable="false" class="edu-sub">B.Tech Degree in Information Technology</p>
+                        <p id="edu2-sub" contenteditable="false" class="edu-sub">B.Tech Degree in Information Technology
+                            <span class="edu-grade" id="edu3-desc" contenteditable="false">CGPA: 9.37(till 2nd year)</span>
+                        </p>
                     </div>
                     <span id="edu2-date" contenteditable="false" class="edu-date">2024 - Present (till 2028)</span>
+                </div>
+
+                <!-- IIT Madras -->
+                <div class="edu-entry">
+                    <div>
+                        <h3 id="edu1-name" contenteditable="false" class="edu-name">Indian Institute of Technology, Madras</h3>
+                        <p id="edu1-sub" contenteditable="false" class="edu-sub">B.S. Degree in Data Science & Applications
+                            <span class="edu-grade" id="edu3-desc" contenteditable="false">CGPA: 7 (till mid diploma level)</span>
+                        </p>
+                    </div>
+                    <span id="edu1-date" contenteditable="false" class="edu-date">2025 - Present (till 2028)</span>
                 </div>
 
                 <!-- STS Computer Education -->
@@ -1479,6 +1486,52 @@
                 </div>
 
                 <div id="projects-container">
+
+                    <!-- Medical QA RAG System -->
+                    <div class="project-entry" id="project-6">
+                        <div class="project-header">
+                            <h3 class="project-title" id="p6-title" contenteditable="false">Medical QA RAG System</h3>
+                            <div class="project-actions">
+                                <button onclick="openEditModal(6)" class="project-edit-btn no-print">
+                                    <i class="fa-solid fa-pencil"></i> Edit Link
+                                </button>
+                                <a href="https://github.com/Sheetal-cell/DocuMed_RAG1" id="p6-link" target="_blank"
+                                    class="project-link-btn">
+                                    <i class="fa-solid fa-arrow-up-right-from-square"></i> Project Link
+                                </a>
+                            </div>
+                        </div>
+                        <p class="project-desc" id="p6-desc" contenteditable="false">
+                            Developed a citation-grounded medical question-answering system using RAG, ChromaDB,
+                            MiniLM embeddings, Knowledge Graphs, and QLoRA-fine-tuned Qwen2.5-1.5B, with source
+                            and page-level citations for reliable responses.
+                        </p>
+                    </div>
+
+                    <!-- TrailSync -->
+                    <div class="project-entry" id="project-7">
+                        <div class="project-header">
+                            <h3 class="project-title" id="p7-title" contenteditable="false">TrailSync</h3>
+                            <div class="project-actions">
+                                <button onclick="openEditModal(7)" class="project-edit-btn no-print">
+                                    <i class="fa-solid fa-pencil"></i> Edit Link
+                                </button>
+                                <a href="https://github.com/Sheetal-cell/TrailSync" id="p7-link" target="_blank"
+                                    class="project-link-btn">
+                                    <i class="fa-solid fa-arrow-up-right-from-square"></i> Project Link
+                                </a>
+                            </div>
+                        </div>
+                        <p class="project-desc" id="p7-desc" contenteditable="false">
+                            Built a full-stack trekking management application that enables users to discover trails,
+                            plan treks, manage bookings, and track trip progress with an intuitive dashboard.
+                            Implemented end-to-end features including user authentication, route management,
+                            and real-time trip coordination.
+                        </p>
+                    </div>
+
+                
+
 
                     <!-- InstantBI -->
                     <div class="project-entry" id="project-3">
@@ -1568,50 +1621,7 @@
                         </p>
                     </div>
 
-                    <!-- Medical QA RAG System -->
-                    <div class="project-entry" id="project-6">
-                        <div class="project-header">
-                            <h3 class="project-title" id="p6-title" contenteditable="false">Medical QA RAG System</h3>
-                            <div class="project-actions">
-                                <button onclick="openEditModal(6)" class="project-edit-btn no-print">
-                                    <i class="fa-solid fa-pencil"></i> Edit Link
-                                </button>
-                                <a href="#" id="p6-link" target="_blank"
-                                    class="project-link-btn">
-                                    <i class="fa-solid fa-arrow-up-right-from-square"></i> Project Link
-                                </a>
-                            </div>
-                        </div>
-                        <p class="project-desc" id="p6-desc" contenteditable="false">
-                            Developed a citation-grounded medical question-answering system using RAG, ChromaDB,
-                            MiniLM embeddings, Knowledge Graphs, and QLoRA-fine-tuned Qwen2.5-1.5B, with source
-                            and page-level citations for reliable responses.
-                        </p>
-                    </div>
-
-                    <!-- TrailSync -->
-                    <div class="project-entry" id="project-7">
-                        <div class="project-header">
-                            <h3 class="project-title" id="p7-title" contenteditable="false">TrailSync</h3>
-                            <div class="project-actions">
-                                <button onclick="openEditModal(7)" class="project-edit-btn no-print">
-                                    <i class="fa-solid fa-pencil"></i> Edit Link
-                                </button>
-                                <a href="#" id="p7-link" target="_blank"
-                                    class="project-link-btn">
-                                    <i class="fa-solid fa-arrow-up-right-from-square"></i> Project Link
-                                </a>
-                            </div>
-                        </div>
-                        <p class="project-desc" id="p7-desc" contenteditable="false">
-                            Built a full-stack trekking management application that enables users to discover trails,
-                            plan treks, manage bookings, and track trip progress with an intuitive dashboard.
-                            Implemented end-to-end features including user authentication, route management,
-                            and real-time trip coordination.
-                        </p>
-                    </div>
-
-                </div>
+                    
             </section>
 
             <!-- 3. Certifications -->
@@ -1767,7 +1777,7 @@
                             discriminators with generative adversarial training.
                         </p>
                         <div style="display:flex;align-items:center;gap:8px;margin-top:5px">
-                            <a href="#" id="rp2-link" target="_blank" class="paper-link">
+                            <a href="https://github.com/Sheetal-cell/CIFAR_10-implementation" id="rp2-link" target="_blank" class="paper-link">
                                 <i class="fa-solid fa-arrow-up-right-from-square"></i> View Implementation
                             </a>
                             
