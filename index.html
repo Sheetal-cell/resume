@@ -5,38 +5,70 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sheetal Bajaj - Professional Resume</title>
-    <!-- Tailwind CSS CDN -->
-    <script src="https://cdn.tailwindcss.com"></script>
+    <meta name="description" content="Resume of Sheetal Bajaj — IT Undergraduate, AI/ML & Data Science specialist.">
     <!-- Font Awesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <!-- Google Fonts for Executive Typography -->
+    <!-- Google Fonts -->
     <link
-        href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;1,400&family=Playfair+Display:wght@600;700&family=Inter:wght@300;400;500;600;700&display=swap"
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Playfair+Display:wght@600;700;800&display=swap"
         rel="stylesheet">
 
     <style>
+        /* ================================
+           CSS CUSTOM PROPERTIES
+           ================================ */
+        :root {
+            --sidebar-bg: #0f172a;
+            --sidebar-bg-light: #1e293b;
+            --sidebar-accent: #6366f1;
+            --sidebar-accent-light: #818cf8;
+            --sidebar-text: #e2e8f0;
+            --sidebar-text-muted: #94a3b8;
+            --sidebar-border: rgba(148, 163, 184, 0.15);
+            --main-bg: #ffffff;
+            --main-text: #1e293b;
+            --main-text-muted: #64748b;
+            --main-border: #e2e8f0;
+            --heading-color: #0f172a;
+            --accent: #4f46e5;
+            --accent-hover: #4338ca;
+            --badge-bg: #f1f5f9;
+            --badge-border: #e2e8f0;
+            --badge-text: #334155;
+            --sidebar-width: 300px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
         body {
             font-family: 'Inter', sans-serif;
-            transition: background-color 0.3s ease;
+            background: #f1f5f9;
+            color: var(--main-text);
+            -webkit-font-smoothing: antialiased;
+            min-height: 100vh;
+            padding: 32px 16px;
         }
 
-        h1,
-        h2,
-        h3 {
-            font-family: 'Lora', serif;
+        h1, h2, h3, h4 {
+            font-family: 'Inter', sans-serif;
         }
 
-        /* Premium Word Template Guidelines */
         .resume-heading {
             font-family: 'Playfair Display', serif;
         }
 
-        /* Custom Edit Visual Guides (Only active in Edit Mode) */
+        /* ================================
+           EDIT MODE
+           ================================ */
         .edit-active [contenteditable="true"] {
-            outline: 2px dashed #4f46e5;
-            outline-offset: 4px;
-            border-radius: 4px;
-            background-color: rgba(79, 70, 229, 0.03);
+            outline: 2px dashed var(--accent);
+            outline-offset: 3px;
+            border-radius: 3px;
+            background-color: rgba(79, 70, 229, 0.04);
             cursor: text;
         }
 
@@ -52,770 +84,1736 @@
             display: block !important;
         }
 
-        /* Default state of helper elements (hidden) */
         .edit-indicator,
         .add-btn-container {
             display: none;
         }
 
+        /* ================================
+           CONTROL BAR
+           ================================ */
+        .control-bar {
+            max-width: 920px;
+            margin: 0 auto 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 16px;
+            background: #fff;
+            padding: 14px 20px;
+            border-radius: 12px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.06);
+            border: 1px solid var(--main-border);
+            flex-wrap: wrap;
+        }
+
+        .control-bar-info {
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+        }
+
+        .control-bar-title {
+            font-size: 13px;
+            font-weight: 700;
+            color: var(--heading-color);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .control-bar-subtitle {
+            font-size: 11px;
+            color: var(--main-text-muted);
+            font-style: italic;
+        }
+
+        .control-bar-actions {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+            align-items: center;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 8px 16px;
+            border-radius: 8px;
+            font-size: 12px;
+            font-weight: 600;
+            border: none;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            text-decoration: none;
+        }
+
+        .btn-dark {
+            background: var(--sidebar-bg);
+            color: #fff;
+        }
+
+        .btn-dark:hover {
+            background: #020617;
+        }
+
+        .btn-accent {
+            background: var(--accent);
+            color: #fff;
+        }
+
+        .btn-accent:hover {
+            background: var(--accent-hover);
+        }
+
+        /* ================================
+           RESUME CANVAS
+           ================================ */
+        .resume-canvas {
+            max-width: 920px;
+            margin: 0 auto;
+            background: var(--main-bg);
+            box-shadow: 0 4px 24px rgba(0,0,0,0.08), 0 1px 4px rgba(0,0,0,0.04);
+            border: 1px solid var(--main-border);
+            display: flex;
+            min-height: 0;
+            overflow: hidden;
+        }
+
+        /* ================================
+           LEFT SIDEBAR
+           ================================ */
+        .sidebar {
+            width: var(--sidebar-width);
+            min-width: var(--sidebar-width);
+            background: var(--sidebar-bg);
+            color: var(--sidebar-text);
+            padding: 28px 22px;
+            display: flex;
+            flex-direction: column;
+            gap: 18px;
+        }
+
+        /* Profile */
+        .profile-section {
+            text-align: center;
+        }
+
+        .profile-photo-wrap {
+            position: relative;
+            width: 100px;
+            height: 100px;
+            margin: 0 auto 14px;
+            border-radius: 50%;
+            overflow: hidden;
+            border: 3px solid var(--sidebar-accent);
+            box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.15);
+        }
+
+        .profile-photo-wrap img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .profile-photo-wrap label {
+            position: absolute;
+            inset: 0;
+            background: rgba(0,0,0,0.65);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 0.2s ease;
+            cursor: pointer;
+            font-size: 10px;
+            color: #fff;
+            font-weight: 500;
+        }
+
+        .profile-photo-wrap:hover label {
+            opacity: 1;
+        }
+
+        .profile-name {
+            font-size: 22px;
+            font-weight: 800;
+            letter-spacing: -0.3px;
+            color: #fff;
+            line-height: 1.15;
+        }
+
+        .profile-headline {
+            font-size: 10px;
+            font-weight: 600;
+            color: var(--sidebar-accent-light);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-top: 5px;
+        }
+
+        /* Sidebar section */
+        .sidebar-section {
+            border-top: 1px solid var(--sidebar-border);
+            padding-top: 14px;
+        }
+
+        .sidebar-section-title {
+            font-size: 9px;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            color: var(--sidebar-accent-light);
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .sidebar-section-title i {
+            font-size: 10px;
+        }
+
+        /* Contact */
+        .contact-list {
+            display: flex;
+            flex-direction: column;
+            gap: 7px;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 9px;
+            font-size: 10.5px;
+            color: var(--sidebar-text-muted);
+        }
+
+        .contact-item i {
+            width: 14px;
+            text-align: center;
+            color: var(--sidebar-accent-light);
+            font-size: 11px;
+        }
+
+        /* Social links */
+        .social-list {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+
+        .social-item {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .social-item a {
+            display: flex;
+            align-items: center;
+            gap: 7px;
+            font-size: 10.5px;
+            color: var(--sidebar-text-muted);
+            text-decoration: none;
+            transition: color 0.2s ease;
+        }
+
+        .social-item a:hover {
+            color: var(--sidebar-accent-light);
+        }
+
+        .social-item a i {
+            width: 14px;
+            text-align: center;
+            font-size: 12px;
+        }
+
+        /* Skills badges (sidebar) */
+        .sidebar-skills {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 4px;
+        }
+
+        .sidebar-skill-badge {
+            font-size: 9px;
+            font-weight: 500;
+            padding: 3px 8px;
+            border-radius: 3px;
+            background: var(--sidebar-bg-light);
+            color: var(--sidebar-text);
+            border: 1px solid var(--sidebar-border);
+            white-space: nowrap;
+        }
+
+        /* Languages */
+        .lang-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 10.5px;
+            color: var(--sidebar-text-muted);
+            margin-bottom: 4px;
+        }
+
+        .lang-dot {
+            width: 5px;
+            height: 5px;
+            border-radius: 50%;
+            background: var(--sidebar-accent-light);
+            flex-shrink: 0;
+        }
+
+        /* Hobbies */
+        .hobby-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 10.5px;
+            color: var(--sidebar-text-muted);
+            padding: 5px 8px;
+            background: var(--sidebar-bg-light);
+            border-radius: 4px;
+            border: 1px solid var(--sidebar-border);
+            margin-bottom: 5px;
+        }
+
+        .hobby-item i {
+            color: var(--sidebar-accent-light);
+            font-size: 11px;
+        }
+
+        /* Summary (sidebar) */
+        .sidebar-summary {
+            font-size: 10px;
+            line-height: 1.55;
+            color: var(--sidebar-text-muted);
+            text-align: justify;
+        }
+
+        /* ================================
+           RIGHT MAIN CONTENT
+           ================================ */
+        .main-content {
+            flex: 1;
+            padding: 28px 30px;
+            display: flex;
+            flex-direction: column;
+            gap: 18px;
+            min-width: 0;
+        }
+
+        .section {
+            /* Each main section */
+        }
+
+        .section-header {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            border-bottom: 2px solid var(--heading-color);
+            padding-bottom: 4px;
+            margin-bottom: 10px;
+        }
+
+        .section-header h2 {
+            font-size: 10px;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 1.2px;
+            color: var(--heading-color);
+        }
+
+        .section-header i {
+            font-size: 11px;
+            color: var(--accent);
+        }
+
+        /* Education entry */
+        .edu-entry {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 8px;
+            margin-bottom: 8px;
+        }
+
+        .edu-entry:last-child {
+            margin-bottom: 0;
+        }
+
+        .edu-name {
+            font-size: 11.5px;
+            font-weight: 700;
+            color: var(--heading-color);
+        }
+
+        .edu-sub {
+            font-size: 10.5px;
+            color: var(--main-text-muted);
+            margin-top: 1px;
+        }
+
+        .edu-date {
+            font-size: 9px;
+            font-weight: 600;
+            color: var(--main-text-muted);
+            background: var(--badge-bg);
+            padding: 2px 8px;
+            border-radius: 3px;
+            white-space: nowrap;
+            flex-shrink: 0;
+        }
+
+        .edu-grade {
+            color: var(--accent);
+            font-weight: 700;
+        }
+
+        /* Certifications grid */
+        .cert-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 8px;
+        }
+
+        .cert-card {
+            padding: 8px 10px;
+            border: 1px solid var(--main-border);
+            border-radius: 4px;
+            transition: background 0.2s ease;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .cert-card:hover {
+            background: var(--badge-bg);
+        }
+
+        .cert-title {
+            font-size: 10.5px;
+            font-weight: 700;
+            color: var(--heading-color);
+        }
+
+        .cert-issuer {
+            font-size: 9px;
+            color: var(--main-text-muted);
+            margin-top: 2px;
+        }
+
+        .cert-link {
+            font-size: 9px;
+            font-weight: 600;
+            color: var(--accent);
+            text-decoration: none;
+            margin-top: 4px;
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            align-self: flex-end;
+            transition: color 0.2s ease;
+        }
+
+        .cert-link:hover {
+            color: var(--accent-hover);
+        }
+
+        /* Project entry */
+        .project-entry {
+            padding-bottom: 10px;
+            border-bottom: 1px solid #f1f5f9;
+            margin-bottom: 10px;
+        }
+
+        .project-entry:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+
+        .project-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+
+        .project-title {
+            font-size: 12px;
+            font-weight: 700;
+            color: var(--heading-color);
+        }
+
+        .project-actions {
+            display: flex;
+            gap: 6px;
+            align-items: center;
+        }
+
+        .project-edit-btn {
+            font-size: 9px;
+            font-weight: 600;
+            color: var(--accent);
+            background: var(--badge-bg);
+            border: 1px solid var(--badge-border);
+            padding: 2px 8px;
+            border-radius: 3px;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .project-link-btn {
+            font-size: 9px;
+            font-weight: 600;
+            color: var(--main-text-muted);
+            background: #fafbfc;
+            border: 1px solid var(--badge-border);
+            padding: 2px 8px;
+            border-radius: 3px;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            transition: color 0.2s ease;
+        }
+
+        .project-link-btn:hover {
+            color: var(--heading-color);
+        }
+
+        .project-desc {
+            font-size: 10.5px;
+            color: var(--main-text-muted);
+            line-height: 1.5;
+            margin-top: 4px;
+            text-align: justify;
+        }
+
+        /* Research Papers */
+        .paper-entry {
+            padding: 8px 10px;
+            border: 1px solid var(--main-border);
+            border-radius: 4px;
+            margin-bottom: 8px;
+            transition: background 0.2s ease;
+        }
+
+        .paper-entry:last-child {
+            margin-bottom: 0;
+        }
+
+        .paper-entry:hover {
+            background: var(--badge-bg);
+        }
+
+        .paper-title {
+            font-size: 11px;
+            font-weight: 700;
+            color: var(--heading-color);
+        }
+
+        .paper-venue {
+            font-size: 9.5px;
+            color: var(--accent);
+            font-weight: 600;
+            margin-top: 2px;
+        }
+
+        .paper-meta {
+            font-size: 9px;
+            color: var(--main-text-muted);
+            margin-top: 2px;
+        }
+
+        .paper-desc {
+            font-size: 10px;
+            color: var(--main-text-muted);
+            line-height: 1.45;
+            margin-top: 4px;
+            text-align: justify;
+        }
+
+        .paper-link {
+            font-size: 9px;
+            font-weight: 600;
+            color: var(--accent);
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            margin-top: 5px;
+            transition: color 0.2s ease;
+        }
+
+        .paper-link:hover {
+            color: var(--accent-hover);
+        }
+
+        /* Achievement entry */
+        .achievement-entry {
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            margin-bottom: 6px;
+        }
+
+        .achievement-entry:last-child {
+            margin-bottom: 0;
+        }
+
+        .achievement-icon {
+            width: 18px;
+            height: 18px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--accent), var(--sidebar-accent-light));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            margin-top: 1px;
+        }
+
+        .achievement-icon i {
+            font-size: 8px;
+            color: #fff;
+        }
+
+        .achievement-title {
+            font-size: 10.5px;
+            font-weight: 700;
+            color: var(--heading-color);
+        }
+
+        .achievement-desc {
+            font-size: 10px;
+            color: var(--main-text-muted);
+            margin-top: 1px;
+        }
+
+        /* ================================
+           TOAST NOTIFICATION
+           ================================ */
+        .toast {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: var(--sidebar-bg);
+            color: #fff;
+            font-size: 11px;
+            font-weight: 600;
+            padding: 12px 18px;
+            border-radius: 10px;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.2);
+            z-index: 100;
+            transform: translateY(80px);
+            opacity: 0;
+            transition: all 0.3s ease;
+            pointer-events: none;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            border: 1px solid rgba(255,255,255,0.06);
+        }
+
+        .toast.visible {
+            transform: translateY(0);
+            opacity: 1;
+        }
+
+        /* ================================
+           MODAL
+           ================================ */
+        .modal-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(15, 23, 42, 0.6);
+            backdrop-filter: blur(4px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 16px;
+            z-index: 90;
+        }
+
+        .modal-overlay.hidden {
+            display: none;
+        }
+
+        .modal-box {
+            background: #fff;
+            border-radius: 10px;
+            box-shadow: 0 12px 48px rgba(0,0,0,0.15);
+            border: 1px solid var(--main-border);
+            max-width: 420px;
+            width: 100%;
+            overflow: hidden;
+        }
+
+        .modal-header {
+            background: var(--sidebar-bg);
+            padding: 14px 18px;
+            color: #fff;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .modal-header h3 {
+            font-size: 12px;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .modal-header h3 i {
+            color: var(--sidebar-accent-light);
+        }
+
+        .modal-close {
+            background: none;
+            border: none;
+            color: var(--sidebar-text-muted);
+            cursor: pointer;
+            font-size: 16px;
+            transition: color 0.2s ease;
+        }
+
+        .modal-close:hover {
+            color: #fff;
+        }
+
+        .modal-body {
+            padding: 18px;
+        }
+
+        .modal-body label {
+            display: block;
+            font-size: 9px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--main-text-muted);
+            margin-bottom: 5px;
+        }
+
+        .modal-body input {
+            width: 100%;
+            border: 1px solid var(--main-border);
+            border-radius: 6px;
+            padding: 8px 12px;
+            font-size: 12px;
+            font-family: 'Inter', sans-serif;
+            outline: none;
+            transition: border-color 0.2s ease;
+        }
+
+        .modal-body input:focus {
+            border-color: var(--accent);
+            box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.1);
+        }
+
+        .modal-footer {
+            background: var(--badge-bg);
+            padding: 12px 18px;
+            border-top: 1px solid var(--main-border);
+            display: flex;
+            justify-content: flex-end;
+            gap: 8px;
+        }
+
+        .modal-footer .btn-cancel {
+            background: none;
+            border: none;
+            font-size: 12px;
+            font-weight: 600;
+            color: var(--main-text-muted);
+            cursor: pointer;
+            padding: 6px 14px;
+        }
+
+        .modal-footer .btn-cancel:hover {
+            color: var(--heading-color);
+        }
+
+        .modal-footer .btn-save {
+            background: var(--accent);
+            color: #fff;
+            border: none;
+            font-size: 12px;
+            font-weight: 600;
+            padding: 6px 14px;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: background 0.2s ease;
+        }
+
+        .modal-footer .btn-save:hover {
+            background: var(--accent-hover);
+        }
+
+        /* Add-skill input (sidebar dark) */
+        .sidebar .add-btn-container input {
+            background: var(--sidebar-bg-light);
+            border: 1px solid var(--sidebar-border);
+            color: var(--sidebar-text);
+            border-radius: 4px;
+            padding: 4px 8px;
+            font-size: 10px;
+            outline: none;
+            flex: 1;
+        }
+
+        .sidebar .add-btn-container input::placeholder {
+            color: var(--sidebar-text-muted);
+        }
+
+        .sidebar .add-btn-container button {
+            background: var(--sidebar-accent);
+            color: #fff;
+            border: none;
+            font-size: 10px;
+            font-weight: 600;
+            padding: 4px 10px;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .sidebar .add-btn-container .flex {
+            display: flex;
+            gap: 6px;
+            margin-top: 8px;
+        }
+
+        /* ================================
+           PRINT / PDF STYLES
+           ================================ */
         @media print {
             @page {
-                size: A4;
-                margin: 0.4in 0.4in 0.4in 0.4in;
-                /* Strictly balanced boundaries */
+                size: A4 portrait;
+                margin: 0;
             }
 
-            body {
-                background-color: #fff !important;
-                color: #000 !important;
+            html, body {
+                width: 210mm;
+                height: 297mm;
+                margin: 0 !important;
                 padding: 0 !important;
-                font-size: 11px !important;
-                /* Extremely high density printing size */
+                background: white !important;
+                font-size: 9px !important;
+                overflow: hidden !important;
+                -webkit-print-color-adjust: exact !important;
+                print-color-adjust: exact !important;
             }
 
-            .no-print {
+            .no-print,
+            .control-bar,
+            .toast,
+            button,
+            label {
                 display: none !important;
             }
 
-            .print-shadow-none {
-                box-shadow: none !important;
-            }
-
-            .print-border-none {
-                border: none !important;
-            }
-
-            /* FORCE only the main split-grid to stay side-by-side during printing */
-            #main-layout-grid {
-                display: grid !important;
-                grid-template-columns: repeat(12, minmax(0, 1fr)) !important;
-                gap: 1.5rem !important;
-            }
-
-            .lg\:col-span-8 {
-                grid-column: span 8 / span 8 !important;
-            }
-
-            .lg\:col-span-4 {
-                grid-column: span 4 / span 4 !important;
-            }
-
-            /* Prevent elements splitting awkwardly mid-page (atomic level only, NOT whole sections) */
-            .group,
-            .skill-badge,
-            .p-2\.5,
-            .space-y-3>div,
-            .space-y-4>div {
-                page-break-inside: avoid;
-                break-inside: avoid;
-            }
-
-            /* Prevent section headers from being left orphaned at the bottom of pages */
-            h2,
-            h3 {
-                page-break-after: avoid;
-                break-after: avoid;
-            }
-
-            /* Compact structural styling for perfect page budgeting */
-            main {
-                padding: 0 !important;
+            .resume-canvas {
+                max-width: none !important;
+                width: 100% !important;
+                margin: 0 !important;
                 border: none !important;
                 box-shadow: none !important;
+                border-radius: 0 !important;
             }
 
-            header {
-                padding-bottom: 1rem !important;
-                margin-bottom: 0.75rem !important;
+            .sidebar {
+                width: 220px !important;
+                min-width: 220px !important;
+                padding: 16px 14px !important;
+                gap: 10px !important;
             }
 
-            #main-layout-grid {
-                margin-top: 0.75rem !important;
+            .profile-photo-wrap {
+                width: 64px !important;
+                height: 64px !important;
+                margin-bottom: 8px !important;
+                border-width: 2px !important;
             }
 
-            .space-y-6>*+* {
-                margin-top: 1rem !important;
+            .profile-name {
+                font-size: 16px !important;
             }
 
-            .space-y-4>*+* {
-                margin-top: 0.35rem !important;
+            .profile-headline {
+                font-size: 7.5px !important;
+                margin-top: 3px !important;
             }
 
-            .space-y-3>*+* {
-                margin-top: 0.35rem !important;
+            .sidebar-section {
+                padding-top: 8px !important;
             }
 
-            /* Completely erase editing UI elements */
+            .sidebar-section-title {
+                font-size: 7px !important;
+                margin-bottom: 5px !important;
+            }
+
+            .contact-item,
+            .social-item a,
+            .lang-item,
+            .hobby-item {
+                font-size: 8px !important;
+            }
+
+            .sidebar-summary {
+                font-size: 7.5px !important;
+                line-height: 1.35 !important;
+            }
+
+            .sidebar-skill-badge {
+                font-size: 7px !important;
+                padding: 2px 5px !important;
+            }
+
+            .sidebar-skills {
+                gap: 2px !important;
+            }
+
+            .hobby-item {
+                padding: 3px 5px !important;
+                margin-bottom: 3px !important;
+            }
+
+            .main-content {
+                padding: 16px 18px !important;
+                gap: 10px !important;
+            }
+
+            .section-header {
+                margin-bottom: 5px !important;
+                padding-bottom: 2px !important;
+                border-bottom-width: 1.5px !important;
+            }
+
+            .section-header h2 {
+                font-size: 8px !important;
+            }
+
+            .edu-entry {
+                margin-bottom: 4px !important;
+            }
+
+            .edu-name {
+                font-size: 8.5px !important;
+            }
+
+            .edu-sub {
+                font-size: 7.5px !important;
+            }
+
+            .edu-date {
+                font-size: 7px !important;
+                padding: 1px 5px !important;
+            }
+
+            .cert-grid {
+                gap: 5px !important;
+            }
+
+            .cert-card {
+                padding: 5px 7px !important;
+            }
+
+            .cert-title {
+                font-size: 8px !important;
+            }
+
+            .cert-issuer {
+                font-size: 7px !important;
+            }
+
+            .cert-link {
+                font-size: 7px !important;
+                margin-top: 2px !important;
+            }
+
+            .project-entry {
+                padding-bottom: 5px !important;
+                margin-bottom: 5px !important;
+            }
+
+            .project-title {
+                font-size: 9px !important;
+            }
+
+            .project-desc {
+                font-size: 7.5px !important;
+                margin-top: 2px !important;
+                line-height: 1.35 !important;
+            }
+
+            .paper-entry {
+                padding: 5px 7px !important;
+                margin-bottom: 4px !important;
+            }
+
+            .paper-title {
+                font-size: 8.5px !important;
+            }
+
+            .paper-venue {
+                font-size: 7.5px !important;
+            }
+
+            .paper-meta {
+                font-size: 7px !important;
+            }
+
+            .paper-desc {
+                font-size: 7.5px !important;
+                line-height: 1.3 !important;
+                margin-top: 2px !important;
+            }
+
+            .paper-link {
+                font-size: 7px !important;
+                margin-top: 2px !important;
+            }
+
+            .achievement-entry {
+                margin-bottom: 3px !important;
+            }
+
+            .achievement-icon {
+                width: 14px !important;
+                height: 14px !important;
+            }
+
+            .achievement-icon i {
+                font-size: 6px !important;
+            }
+
+            .achievement-title {
+                font-size: 8px !important;
+            }
+
+            .achievement-desc {
+                font-size: 7.5px !important;
+            }
+
+            /* Remove editing outlines */
             [contenteditable="true"] {
                 outline: none !important;
-                background-color: transparent !important;
+                background: transparent !important;
+            }
+
+            section, .edu-entry, .cert-card, .project-entry, .paper-entry, .achievement-entry {
+                page-break-inside: avoid !important;
+                break-inside: avoid !important;
+            }
+
+            h2, h3 {
+                page-break-after: avoid !important;
+                break-after: avoid !important;
+            }
+        }
+
+        /* ================================
+           RESPONSIVE
+           ================================ */
+        @media (max-width: 768px) {
+            .resume-canvas {
+                flex-direction: column;
+            }
+
+            .sidebar {
+                width: 100%;
+                min-width: 100%;
+            }
+
+            .control-bar {
+                flex-direction: column;
+                align-items: flex-start;
             }
         }
     </style>
 </head>
 
-<body class="bg-slate-50 text-slate-900 antialiased min-h-screen py-8 px-4 sm:px-6 lg:px-8">
+<body>
 
     <!-- Control Bar -->
-    <div
-        class="max-w-4xl mx-auto mb-6 flex flex-col sm:flex-row justify-between items-center gap-4 no-print bg-white p-4 rounded-xl shadow-sm border border-slate-200">
-        <div class="flex flex-col">
-            <span class="text-sm font-bold text-slate-800 flex items-center gap-2">
-                <i class="fa-solid fa-file-invoice text-indigo-600"></i> Word-Template Executive Workspace
+    <div class="control-bar no-print">
+        <div class="control-bar-info">
+            <span class="control-bar-title">
+                <i class="fa-solid fa-file-invoice" style="color: var(--accent)"></i> Executive Resume Workspace
             </span>
-            <span class="text-xs text-slate-500 italic mt-0.5">
+            <span class="control-bar-subtitle">
                 Toggle "Edit Mode" to type directly or update credentials/project links live!
             </span>
         </div>
-        <div class="flex flex-wrap gap-2 items-center">
-            <!-- Edit Mode Toggle Switch -->
-            <button id="editModeToggle" onclick="toggleEditMode()"
-                class="bg-slate-800 hover:bg-slate-900 text-white font-medium py-2 px-4 rounded-lg shadow-sm flex items-center gap-2 transition-all cursor-pointer text-xs">
-                <i class="fa-solid fa-pen-to-square text-indigo-400" id="editIcon"></i>
+        <div class="control-bar-actions">
+            <button id="editModeToggle" onclick="toggleEditMode()" class="btn btn-dark">
+                <i class="fa-solid fa-pen-to-square" style="color: var(--sidebar-accent-light)" id="editIcon"></i>
                 <span id="editBtnText">Turn ON Edit Mode</span>
             </button>
-            <!-- Print / PDF Button -->
-            <button onclick="triggerPrint()"
-                class="bg-indigo-600 hover:bg-indigo-700 text-white font-medium py-2 px-4 rounded-lg shadow-sm flex items-center gap-2 transition-all cursor-pointer text-xs">
+            <button onclick="triggerPrint()" class="btn btn-accent">
                 <i class="fa-solid fa-file-pdf"></i> Export to PDF / Print
             </button>
         </div>
     </div>
 
-    <!-- Live Toast Notification Container -->
-    <div id="toast"
-        class="fixed bottom-5 right-5 bg-slate-950 text-white text-xs font-semibold px-4 py-3 rounded-xl shadow-2xl z-50 transform translate-y-20 opacity-0 transition-all duration-300 pointer-events-none flex items-center gap-2 border border-slate-800">
-        <i class="fa-solid fa-circle-check text-emerald-400 text-sm"></i>
+    <!-- Toast Notification -->
+    <div id="toast" class="toast">
+        <i class="fa-solid fa-circle-check" style="color: #34d399; font-size: 13px"></i>
         <span id="toast-message">Template ready for edits!</span>
     </div>
 
-    <!-- Main Resume Document Canvas -->
-    <main id="resume-document"
-        class="max-w-4xl mx-auto bg-white p-8 sm:p-12 md:p-16 shadow-lg border border-slate-200 print-shadow-none print-border-none rounded-none text-slate-900 relative">
+    <!-- ==========================================
+         RESUME DOCUMENT
+         ========================================== -->
+    <main id="resume-document" class="resume-canvas">
 
-        <!-- Header Section (Classic Centered Editorial Style) -->
-        <header class="text-center pb-6 border-b-2 border-slate-900">
-            <!-- Photo Upload Area -->
-            <div
-                class="relative w-28 h-28 mx-auto rounded-full border-2 border-slate-300 overflow-hidden bg-slate-100 flex items-center justify-center shrink-0 mb-4 group shadow-sm">
-                <img id="profile-img"
-                    src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=256&auto=format&fit=crop"
-                    alt="Sheetal Bajaj" class="w-full h-full object-cover">
-                <label for="photo-upload"
-                    class="absolute inset-0 bg-black/60 opacity-0 hover:opacity-100 flex items-center justify-center text-[10px] text-white cursor-pointer transition-opacity no-print">
-                    <span>Upload Image</span>
-                    <input type="file" id="photo-upload" accept="image/*" class="hidden" onchange="uploadPhoto(event)">
-                </label>
+        <!-- ===== LEFT SIDEBAR ===== -->
+        <aside class="sidebar">
+
+            <!-- Profile Photo & Name -->
+            <div class="profile-section">
+                <div class="profile-photo-wrap">
+                    <img id="profile-img"
+                        src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=256&auto=format&fit=crop"
+                        alt="Sheetal Bajaj">
+                    <label for="photo-upload" class="no-print">
+                        <span><i class="fa-solid fa-camera"></i> Upload</span>
+                        <input type="file" id="photo-upload" accept="image/*" class="hidden"
+                            onchange="uploadPhoto(event)" style="display:none">
+                    </label>
+                </div>
+                <h1 id="user-name" contenteditable="false" class="profile-name resume-heading">Sheetal Bajaj</h1>
+                <p id="user-headline" contenteditable="false" class="profile-headline">IT Undergraduate | AI, ML &
+                    Data Science Focus</p>
             </div>
 
-            <h1 id="user-name" contenteditable="false"
-                class="resume-heading text-4xl font-extrabold tracking-tight text-slate-950">Sheetal Bajaj</h1>
-            <p id="user-headline" contenteditable="false"
-                class="text-indigo-700 font-semibold text-sm tracking-wide uppercase mt-2">IT Undergraduate | AI, ML &
-                Data Science Focus</p>
-
-            <!-- Contact Meta Bar -->
-            <div class="flex flex-wrap justify-center gap-x-6 gap-y-1.5 mt-4 text-xs font-medium text-slate-600">
-                <span>
-                    <i class="fa-solid fa-envelope mr-1 text-slate-400"></i>
-                    <span id="user-email" contenteditable="false">sheetalbajaj@example.com</span>
-                </span>
-                <span>
-                    <i class="fa-solid fa-phone mr-1 text-slate-400"></i>
-                    <span id="user-phone" contenteditable="false">+91 12345 67890</span>
-                </span>
-                <span>
-                    <i class="fa-solid fa-location-dot mr-1 text-slate-400"></i>
-                    <span id="user-location" contenteditable="false">Nadia, West Bengal, India</span>
-                </span>
+            <!-- Contact Info -->
+            <div class="sidebar-section">
+                <div class="sidebar-section-title">
+                    <i class="fa-solid fa-address-card"></i> Contact
+                </div>
+                <div class="contact-list">
+                    <div class="contact-item">
+                        <i class="fa-solid fa-envelope"></i>
+                        <span id="user-email" contenteditable="false">sheetalbajaj@example.com</span>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fa-solid fa-phone"></i>
+                        <span id="user-phone" contenteditable="false">+91 12345 67890</span>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fa-solid fa-location-dot"></i>
+                        <span id="user-location" contenteditable="false">Nadia, West Bengal, India</span>
+                    </div>
+                </div>
             </div>
 
-            <!-- Social Links Panel -->
-
-
-            <div
-                class="flex flex-wrap justify-center gap-x-6 gap-y-2 mt-3 pt-3 border-t border-slate-100 text-xs font-medium text-slate-700">
-
-                <span class="flex items-center gap-1 group">
-                    <a id="link-portfolio" href="https://portfoliosheetal.vercel.app/" target="_blank"
-                        class="hover:text-indigo-600 flex items-center gap-1">
-                        <i class="fa-solid fa-globe text-slate-500"></i> Portfolio
-                    </a>
-                    <button onclick="triggerLinkEdit('portfolio')"
-                        class="edit-indicator hidden text-indigo-600 hover:text-indigo-800 ml-1 text-[10px] no-print">
-                        <i class="fa-solid fa-pen"></i>
-                    </button>
-                </span>
-
-                <span class="flex items-center gap-1 group">
-                    <a id="link-linkedin" href="https://www.linkedin.com/in/sheetal-bajaj-s06091009/" target="_blank"
-                        class="hover:text-indigo-600 flex items-center gap-1">
-                        <i class="fa-brands fa-linkedin text-slate-500"></i> LinkedIn
-                    </a>
-                    <button onclick="triggerLinkEdit('linkedin')"
-                        class="edit-indicator hidden text-indigo-600 hover:text-indigo-800 ml-1 text-[10px] no-print">
-                        <i class="fa-solid fa-pen"></i>
-                    </button>
-                </span>
-                <span class="flex items-center gap-1 group">
-                    <a id="link-github" href="https://github.com/Sheetal-cell" target="_blank"
-                        class="hover:text-indigo-600 flex items-center gap-1">
-                        <i class="fa-brands fa-github text-slate-500"></i> GitHub
-                    </a>
-                    <button onclick="triggerLinkEdit('github')"
-                        class="edit-indicator hidden text-indigo-600 hover:text-indigo-800 ml-1 text-[10px] no-print">
-                        <i class="fa-solid fa-pen"></i>
-                    </button>
-                </span>
-                <span class="flex items-center gap-1 group">
-                    <a id="link-gfg" href="https://www.geeksforgeeks.org/profile/sheetal_bajaj" target="_blank"
-                        class="hover:text-indigo-600 flex items-center gap-1">
-                        <i class="fa-solid fa-code text-slate-500"></i> GeeksforGeeks
-                    </a>
-                    <button onclick="triggerLinkEdit('gfg')"
-                        class="edit-indicator hidden text-indigo-600 hover:text-indigo-800 ml-1 text-[10px] no-print">
-                        <i class="fa-solid fa-pen"></i>
-                    </button>
-                </span>
-                <span class="flex items-center gap-1 group">
-                    <a id="link-kaggle" href="https://www.kaggle.com/sheetalbajaj" target="_blank"
-                        class="hover:text-indigo-600 flex items-center gap-1">
-                        <i class="fa-brands fa-kaggle text-slate-500"></i> Kaggle
-                    </a>
-                    <button onclick="triggerLinkEdit('kaggle')"
-                        class="edit-indicator hidden text-indigo-600 hover:text-indigo-800 ml-1 text-[10px] no-print">
-                        <i class="fa-solid fa-pen"></i>
-                    </button>
-                </span>
+            <!-- Social Links -->
+            <div class="sidebar-section">
+                <div class="sidebar-section-title">
+                    <i class="fa-solid fa-share-nodes"></i> Profiles
+                </div>
+                <div class="social-list">
+                    <div class="social-item">
+                        <a id="link-portfolio" href="https://portfoliosheetal.vercel.app/" target="_blank">
+                            <i class="fa-solid fa-globe"></i> Portfolio
+                        </a>
+                        <button onclick="triggerLinkEdit('portfolio')"
+                            class="edit-indicator" style="display:none;background:none;border:none;color:var(--sidebar-accent-light);cursor:pointer;font-size:9px">
+                            <i class="fa-solid fa-pen"></i>
+                        </button>
+                    </div>
+                    <div class="social-item">
+                        <a id="link-linkedin" href="https://www.linkedin.com/in/sheetal-bajaj-s06091009/"
+                            target="_blank">
+                            <i class="fa-brands fa-linkedin"></i> LinkedIn
+                        </a>
+                        <button onclick="triggerLinkEdit('linkedin')"
+                            class="edit-indicator" style="display:none;background:none;border:none;color:var(--sidebar-accent-light);cursor:pointer;font-size:9px">
+                            <i class="fa-solid fa-pen"></i>
+                        </button>
+                    </div>
+                    <div class="social-item">
+                        <a id="link-github" href="https://github.com/Sheetal-cell" target="_blank">
+                            <i class="fa-brands fa-github"></i> GitHub
+                        </a>
+                        <button onclick="triggerLinkEdit('github')"
+                            class="edit-indicator" style="display:none;background:none;border:none;color:var(--sidebar-accent-light);cursor:pointer;font-size:9px">
+                            <i class="fa-solid fa-pen"></i>
+                        </button>
+                    </div>
+                    <div class="social-item">
+                        <a id="link-gfg" href="https://www.geeksforgeeks.org/profile/sheetal_bajaj" target="_blank">
+                            <i class="fa-solid fa-code"></i> GeeksforGeeks
+                        </a>
+                        <button onclick="triggerLinkEdit('gfg')"
+                            class="edit-indicator" style="display:none;background:none;border:none;color:var(--sidebar-accent-light);cursor:pointer;font-size:9px">
+                            <i class="fa-solid fa-pen"></i>
+                        </button>
+                    </div>
+                    <div class="social-item">
+                        <a id="link-kaggle" href="https://www.kaggle.com/sheetalbajaj" target="_blank">
+                            <i class="fa-brands fa-kaggle"></i> Kaggle
+                        </a>
+                        <button onclick="triggerLinkEdit('kaggle')"
+                            class="edit-indicator" style="display:none;background:none;border:none;color:var(--sidebar-accent-light);cursor:pointer;font-size:9px">
+                            <i class="fa-solid fa-pen"></i>
+                        </button>
+                    </div>
+                </div>
             </div>
-        </header>
 
-        <!-- Two Column Main Body Grid -->
-        <div id="main-layout-grid" class="grid grid-cols-1 lg:grid-cols-12 gap-8 mt-6">
+            <!-- Summary -->
+            <div class="sidebar-section">
+                <div class="sidebar-section-title">
+                    <i class="fa-solid fa-user"></i> Summary
+                </div>
+                <p id="user-summary" contenteditable="false" class="sidebar-summary">
+                    B.Tech Information Technology undergraduate and IIT Madras B.S. Data Science student with strong
+                    foundations in Machine Learning, Data Analysis, Statistics, SQL, and Python. Experienced in
+                    developing AI-powered applications that leverage data processing, natural language processing,
+                    and analytical workflows to solve real-world problems.
+                </p>
+            </div>
 
-            <!-- Left Grid (Main Portfolio Track) -->
-            <div class="lg:col-span-8 space-y-6">
-
-                <!-- 1. Education Track -->
-                <section>
-                    <div class="flex items-center gap-2 mb-3 border-b-2 border-slate-900 pb-1">
-                        <h2 class="text-xs font-bold uppercase tracking-wider text-slate-950">Education</h2>
+            <!-- Skills: Programming Languages -->
+            <div class="sidebar-section">
+                <div class="sidebar-section-title">
+                    <i class="fa-solid fa-code"></i> Programming
+                </div>
+                <div class="sidebar-skills skills-list">
+                    <span class="sidebar-skill-badge">Python</span>
+                    <span class="sidebar-skill-badge">C++</span>
+                    <span class="sidebar-skill-badge">C</span>
+                    <span class="sidebar-skill-badge">SQL</span>
+                </div>
+                <div class="add-btn-container no-print" style="display:none">
+                    <div class="flex">
+                        <input type="text" placeholder="Add skill...">
+                        <button onclick="addNewSkill(this)">+ Add</button>
                     </div>
+                </div>
+            </div>
 
-                    <div class="space-y-3">
-                        <!-- IIT Madras -->
-                        <div class="flex flex-col sm:flex-row justify-between items-start gap-1">
-                            <div>
-                                <h3 id="edu1-name" contenteditable="false" class="font-bold text-slate-900 text-xs">
-                                    Indian Institute of Technology, Madras</h3>
-                                <p id="edu1-sub" contenteditable="false" class="text-slate-600 text-[11px] mt-0.5">B.S.
-                                    Degree in Data Science & Applications</p>
-                            </div>
-                            <span id="edu1-date" contenteditable="false"
-                                class="text-[10px] font-semibold text-slate-500 bg-slate-100 px-2 py-0.5 rounded whitespace-nowrap">2025
-                                - Present</span>
-                        </div>
-
-                        <!-- MAKAUT -->
-                        <div class="flex flex-col sm:flex-row justify-between items-start gap-1">
-                            <div>
-                                <h3 id="edu2-name" contenteditable="false" class="font-bold text-slate-900 text-xs">
-                                    Maulana Abul Kalam Azad University of Technology</h3>
-                                <p id="edu2-sub" contenteditable="false" class="text-slate-600 text-[11px] mt-0.5">
-                                    B.Tech Degree in Information Technology</p>
-                            </div>
-                            <span id="edu2-date" contenteditable="false"
-                                class="text-[10px] font-semibold text-slate-500 bg-slate-100 px-2 py-0.5 rounded whitespace-nowrap">2024
-                                - Present</span>
-                        </div>
-
-                        <!-- STS Computer Education -->
-                        <div class="flex flex-col sm:flex-row justify-between items-start gap-1">
-                            <div>
-                                <h3 id="edu3-name" contenteditable="false" class="font-semibold text-slate-900 text-xs">
-                                    STS Computer Education</h3>
-                                <p id="edu3-sub" contenteditable="false" class="text-slate-600 text-[11px] mt-0.5">
-                                    Diploma in Computer Applications &bull; <span class="text-indigo-600 font-semibold"
-                                        id="edu3-desc" contenteditable="false">Grade: 84%</span></p>
-                            </div>
-                            <span id="edu3-date" contenteditable="false"
-                                class="text-[10px] font-semibold text-slate-500 bg-slate-100 px-2 py-0.5 rounded whitespace-nowrap">2022
-                                - 2023</span>
-                        </div>
-
-                        <!-- Higher Secondary -->
-                        <div class="flex flex-col sm:flex-row justify-between items-start gap-1">
-                            <div>
-                                <h3 id="edu4-name" contenteditable="false" class="font-semibold text-slate-900 text-xs">
-                                    Diksha International School</h3>
-                                <p id="edu4-sub" contenteditable="false" class="text-slate-600 text-[11px] mt-0.5">Class
-                                    XII Science Stream (CBSE) &bull; <span class="text-indigo-600 font-semibold"
-                                        id="edu4-desc" contenteditable="false">Grade: 85%</span></p>
-                            </div>
-                            <span id="edu4-date" contenteditable="false"
-                                class="text-[10px] font-semibold text-slate-500 bg-slate-100 px-2 py-0.5 rounded whitespace-nowrap">2022
-                                - 2024</span>
-                        </div>
-
-                        <!-- Secondary -->
-                        <div class="flex flex-col sm:flex-row justify-between items-start gap-1">
-                            <div>
-                                <h3 id="edu5-name" contenteditable="false" class="font-semibold text-slate-900 text-xs">
-                                    Bethel Mission School</h3>
-                                <p id="edu5-sub" contenteditable="false" class="text-slate-600 text-[11px] mt-0.5">Class
-                                    X General Curriculum (CBSE) &bull; <span class="text-indigo-600 font-semibold"
-                                        id="edu5-desc" contenteditable="false">Grade: 96%</span></p>
-                            </div>
-                            <span id="edu5-date" contenteditable="false"
-                                class="text-[10px] font-semibold text-slate-500 bg-slate-100 px-2 py-0.5 rounded whitespace-nowrap">2009
-                                - 2022</span>
-                        </div>
+            <!-- Skills: Data Science -->
+            <div class="sidebar-section">
+                <div class="sidebar-section-title">
+                    <i class="fa-solid fa-chart-line"></i> Data Science
+                </div>
+                <div class="sidebar-skills skills-list">
+                    <span class="sidebar-skill-badge">Data Analysis</span>
+                    <span class="sidebar-skill-badge">Machine Learning</span>
+                    <span class="sidebar-skill-badge">Statistics</span>
+                    <span class="sidebar-skill-badge">Data Visualization</span>
+                    <span class="sidebar-skill-badge">Data Cleaning</span>
+                    <span class="sidebar-skill-badge">Feature Engineering</span>
+                    <span class="sidebar-skill-badge">Predictive Analytics</span>
+                </div>
+                <div class="add-btn-container no-print" style="display:none">
+                    <div class="flex">
+                        <input type="text" placeholder="Add skill...">
+                        <button onclick="addNewSkill(this)">+ Add</button>
                     </div>
-                </section>
+                </div>
+            </div>
 
-                <!-- 2. Certifications Section -->
-                <section>
-                    <div class="flex items-center gap-2 mb-3 border-b-2 border-slate-900 pb-1">
-                        <h2 class="text-xs font-bold uppercase tracking-wider text-slate-950">Certifications</h2>
+            <!-- Skills: Libraries & Frameworks -->
+            <div class="sidebar-section">
+                <div class="sidebar-section-title">
+                    <i class="fa-solid fa-layer-group"></i> Libraries & Frameworks
+                </div>
+                <div class="sidebar-skills skills-list">
+                    <span class="sidebar-skill-badge">Pandas</span>
+                    <span class="sidebar-skill-badge">NumPy</span>
+                    <span class="sidebar-skill-badge">Matplotlib</span>
+                    <span class="sidebar-skill-badge">Seaborn</span>
+                    <span class="sidebar-skill-badge">Scikit-learn</span>
+                    <span class="sidebar-skill-badge">TensorFlow</span>
+                    <span class="sidebar-skill-badge">React</span>
+                    <span class="sidebar-skill-badge">Tailwind CSS</span>
+                    <span class="sidebar-skill-badge">Flask</span>
+                </div>
+                <div class="add-btn-container no-print" style="display:none">
+                    <div class="flex">
+                        <input type="text" placeholder="Add skill...">
+                        <button onclick="addNewSkill(this)">+ Add</button>
                     </div>
+                </div>
+            </div>
 
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+            <!-- Skills: Tools & Engineering -->
+            <div class="sidebar-section">
+                <div class="sidebar-section-title">
+                    <i class="fa-solid fa-wrench"></i> Tools & Engineering
+                </div>
+                <div class="sidebar-skills skills-list">
+                    <span class="sidebar-skill-badge">OOP</span>
+                    <span class="sidebar-skill-badge">DSA</span>
+                    <span class="sidebar-skill-badge">REST APIs</span>
+                    <span class="sidebar-skill-badge">Git</span>
+                    <span class="sidebar-skill-badge">Postman</span>
+                    <span class="sidebar-skill-badge">SQLite</span>
+                    <span class="sidebar-skill-badge">SQLAlchemy</span>
+                    <span class="sidebar-skill-badge">Google Colab</span>
+                </div>
+                <div class="add-btn-container no-print" style="display:none">
+                    <div class="flex">
+                        <input type="text" placeholder="Add skill...">
+                        <button onclick="addNewSkill(this)">+ Add</button>
+                    </div>
+                </div>
+            </div>
 
+            <!-- Languages -->
+            <div class="sidebar-section">
+                <div class="sidebar-section-title">
+                    <i class="fa-solid fa-language"></i> Languages
+                </div>
+                <div class="lang-item">
+                    <span class="lang-dot"></span>
+                    <span id="lang1" contenteditable="false">English</span>
+                </div>
+                <div class="lang-item">
+                    <span class="lang-dot"></span>
+                    <span id="lang2" contenteditable="false">Hindi</span>
+                </div>
+            </div>
 
-                        <!-- Foundation Programming -->
-                        <div
-                            class="p-2.5 border border-slate-200 rounded-xs hover:bg-slate-50 transition-colors flex flex-col justify-between">
-                            <div>
-                                <div class="flex justify-between items-start gap-1">
-                                    <h4 id="cert2-title" contenteditable="false"
-                                        class="font-bold text-slate-955 text-[11px]">Programming & Data Science</h4>
-                                    <button onclick="triggerLinkEdit('cert2')"
-                                        class="edit-indicator hidden text-indigo-600 hover:text-indigo-800 text-[10px] no-print">
-                                        <i class="fa-solid fa-pencil"></i>
-                                    </button>
-                                </div>
-                                <p id="cert2-issuer" contenteditable="false" class="text-[10px] text-slate-500">IIT
-                                    Madras &bull; Dec 2025</p>
-                            </div>
-                            <div class="mt-1.5 text-right">
-                                <a id="link-cert2"
-                                    href="https://drive.google.com/file/d/1xgw8WbHLTf0vubeDi5eOO1WLGqeQBLPc/view?usp=sharing"
-                                    target="_blank"
-                                    class="text-indigo-600 hover:text-indigo-800 text-[10px] font-semibold tracking-wide flex items-center justify-end gap-1">
-                                    View Certificate <i class="fa-solid fa-chevron-right text-[8px]"></i>
+            <!-- Hobbies -->
+            <div class="sidebar-section">
+                <div class="sidebar-section-title">
+                    <i class="fa-solid fa-heart"></i> Hobbies
+                </div>
+                <div class="hobby-item">
+                    <i class="fa-solid fa-palette"></i>
+                    <span id="hobby1" contenteditable="false">Painting</span>
+                </div>
+                <div class="hobby-item">
+                    <i class="fa-solid fa-pen-nib"></i>
+                    <span id="hobby2" contenteditable="false">Story Writing</span>
+                </div>
+            </div>
+
+        </aside>
+
+        <!-- ===== RIGHT MAIN CONTENT ===== -->
+        <div class="main-content">
+
+            <!-- 1. Education -->
+            <section class="section">
+                <div class="section-header">
+                    <i class="fa-solid fa-graduation-cap"></i>
+                    <h2>Education</h2>
+                </div>
+
+                <!-- IIT Madras -->
+                <div class="edu-entry">
+                    <div>
+                        <h3 id="edu1-name" contenteditable="false" class="edu-name">Indian Institute of Technology, Madras</h3>
+                        <p id="edu1-sub" contenteditable="false" class="edu-sub">B.S. Degree in Data Science & Applications</p>
+                    </div>
+                    <span id="edu1-date" contenteditable="false" class="edu-date">2025 - Present (till 2028)</span>
+                </div>
+
+                <!-- MAKAUT -->
+                <div class="edu-entry">
+                    <div>
+                        <h3 id="edu2-name" contenteditable="false" class="edu-name">Maulana Abul Kalam Azad University of Technology</h3>
+                        <p id="edu2-sub" contenteditable="false" class="edu-sub">B.Tech Degree in Information Technology</p>
+                    </div>
+                    <span id="edu2-date" contenteditable="false" class="edu-date">2024 - Present (till 2028)</span>
+                </div>
+
+                <!-- STS Computer Education -->
+                <div class="edu-entry">
+                    <div>
+                        <h3 id="edu3-name" contenteditable="false" class="edu-name">STS Computer Education</h3>
+                        <p id="edu3-sub" contenteditable="false" class="edu-sub">Diploma in Computer Applications &bull;
+                            <span class="edu-grade" id="edu3-desc" contenteditable="false">Grade: 84%</span>
+                        </p>
+                    </div>
+                    <span id="edu3-date" contenteditable="false" class="edu-date">2022 - 2023</span>
+                </div>
+
+                <!-- Higher Secondary -->
+                <div class="edu-entry">
+                    <div>
+                        <h3 id="edu4-name" contenteditable="false" class="edu-name">Diksha International School</h3>
+                        <p id="edu4-sub" contenteditable="false" class="edu-sub">Class XII Science Stream (CBSE) &bull;
+                            <span class="edu-grade" id="edu4-desc" contenteditable="false">Grade: 85%</span>
+                        </p>
+                    </div>
+                    <span id="edu4-date" contenteditable="false" class="edu-date">2022 - 2024</span>
+                </div>
+
+                <!-- Secondary -->
+                <div class="edu-entry">
+                    <div>
+                        <h3 id="edu5-name" contenteditable="false" class="edu-name">Bethel Mission School</h3>
+                        <p id="edu5-sub" contenteditable="false" class="edu-sub">Class X General Curriculum (CBSE) &bull;
+                            <span class="edu-grade" id="edu5-desc" contenteditable="false">Grade: 96%</span>
+                        </p>
+                    </div>
+                    <span id="edu5-date" contenteditable="false" class="edu-date">2009 - 2022</span>
+                </div>
+            </section>
+
+            <!-- 2. Key Projects -->
+            <section class="section">
+                <div class="section-header">
+                    <i class="fa-solid fa-diagram-project"></i>
+                    <h2>Key Projects</h2>
+                </div>
+
+                <div id="projects-container">
+
+                    <!-- InstantBI -->
+                    <div class="project-entry" id="project-3">
+                        <div class="project-header">
+                            <h3 class="project-title" id="p3-title" contenteditable="false">InstantBI</h3>
+                            <div class="project-actions">
+                                <button onclick="openEditModal(3)" class="project-edit-btn no-print">
+                                    <i class="fa-solid fa-pencil"></i> Edit Link
+                                </button>
+                                <a href="https://instant-bi.vercel.app/" id="p3-link" target="_blank"
+                                    class="project-link-btn">
+                                    <i class="fa-solid fa-arrow-up-right-from-square"></i> Project Link
                                 </a>
                             </div>
                         </div>
+                        <p class="project-desc" id="p3-desc" contenteditable="false">
+                            Developed an AI-powered analytics platform that transforms natural language queries into SQL,
+                            performs data preprocessing, and generates interactive dashboards for exploratory data
+                            analysis. Built full-stack RESTful backend APIs, SQL-based data processing workflows, and
+                            LLM-assisted query interpretation for scalable analytical solutions.
+                        </p>
+                    </div>
 
-                        <!-- freeCodeCamp Responsive Web Design -->
-                        <div
-                            class="p-2.5 border border-slate-200 rounded-xs hover:bg-slate-50 transition-colors flex flex-col justify-between">
-                            <div>
-                                <div class="flex justify-between items-start gap-1">
-                                    <h4 id="cert3-title" contenteditable="false"
-                                        class="font-bold text-slate-950 text-[11px]">Responsive Web Design</h4>
-                                    <button onclick="triggerLinkEdit('cert3')"
-                                        class="edit-indicator hidden text-indigo-600 hover:text-indigo-800 text-[10px] no-print">
-                                        <i class="fa-solid fa-pencil"></i>
-                                    </button>
-                                </div>
-                                <p id="cert3-issuer" contenteditable="false" class="text-[10px] text-slate-500">
-                                    freeCodeCamp &bull; Feb 2025</p>
-                            </div>
-                            <div class="mt-1.5 text-right">
-                                <a id="link-cert3"
-                                    href="https://drive.google.com/file/d/1hyEqGvf-JyRuzj2jyxpZMitpdjdwX3SL/view?usp=sharing"
-                                    target="_blank"
-                                    class="text-indigo-600 hover:text-indigo-800 text-[10px] font-semibold tracking-wide flex items-center justify-end gap-1">
-                                    View Certificate <i class="fa-solid fa-chevron-right text-[8px]"></i>
+                    <!-- SAKSHYA -->
+                    <div class="project-entry" id="project-2">
+                        <div class="project-header">
+                            <h3 class="project-title" id="p2-title" contenteditable="false">SAKSHYA</h3>
+                            <div class="project-actions">
+                                <button onclick="openEditModal(2)" class="project-edit-btn no-print">
+                                    <i class="fa-solid fa-pencil"></i> Edit Link
+                                </button>
+                                <a href="https://sakshya-frontend.vercel.app/" id="p2-link" target="_blank"
+                                    class="project-link-btn">
+                                    <i class="fa-solid fa-arrow-up-right-from-square"></i> Project Link
                                 </a>
                             </div>
                         </div>
+                        <p class="project-desc" id="p2-desc" contenteditable="false">
+                            Built an AI-powered legal document analysis platform that extracts critical directives,
+                            compliance requirements, appeal recommendations, and potential risk indicators from court
+                            judgment PDFs. Designed backend document-processing services, integrated LLM-based
+                            information extraction, and built scalable APIs for efficient legal document analysis.
+                        </p>
+                    </div>
 
-                        <!-- Postman API Expert -->
-                        <div
-                            class="p-2.5 border border-slate-200 rounded-xs hover:bg-slate-50 transition-colors flex flex-col justify-between">
-                            <div>
-                                <div class="flex justify-between items-start gap-1">
-                                    <h4 id="cert4-title" contenteditable="false"
-                                        class="font-bold text-slate-950 text-[11px]">Postman API Fundamentals</h4>
-                                    <button onclick="triggerLinkEdit('cert4')"
-                                        class="edit-indicator hidden text-indigo-600 hover:text-indigo-800 text-[10px] no-print">
-                                        <i class="fa-solid fa-pencil"></i>
-                                    </button>
-                                </div>
-                                <p id="cert4-issuer" contenteditable="false" class="text-[10px] text-slate-500">Postman
-                                    &bull; March 2025</p>
-                            </div>
-                            <div class="mt-1.5 text-right">
-                                <a id="link-cert4"
-                                    href="https://drive.google.com/file/d/1dnCJynq2C9WcwM6msGBRI4NUqrzgKs8F/view?usp=sharing"
-                                    target="_blank"
-                                    class="text-indigo-600 hover:text-indigo-800 text-[10px] font-semibold tracking-wide flex items-center justify-end gap-1">
-                                    View Certificate <i class="fa-solid fa-chevron-right text-[8px]"></i>
+                    <!-- MediMitra -->
+                    <div class="project-entry" id="project-4">
+                        <div class="project-header">
+                            <h3 class="project-title" id="p4-title" contenteditable="false">MediMitra</h3>
+                            <div class="project-actions">
+                                <button onclick="openEditModal(4)" class="project-edit-btn no-print">
+                                    <i class="fa-solid fa-pencil"></i> Edit Link
+                                </button>
+                                <a href="https://medi-mitra-two.vercel.app/" id="p4-link" target="_blank"
+                                    class="project-link-btn">
+                                    <i class="fa-solid fa-arrow-up-right-from-square"></i> Project Link
                                 </a>
                             </div>
                         </div>
+                        <p class="project-desc" id="p4-desc" contenteditable="false">
+                            Developed a cross-platform medicine reminder application that enables users to schedule
+                            medications, receive timely dosage notifications, and track treatment adherence. Integrated
+                            Firebase services for authentication, secure cloud storage, and real-time notification
+                            management to deliver a reliable healthcare companion.
+                        </p>
+                    </div>
 
-                        <!-- Cisco Data Analytics -->
-                        <div
-                            class="p-2.5 border border-slate-200 rounded-xs hover:bg-slate-50 transition-colors flex flex-col justify-between">
-                            <div>
-                                <div class="flex justify-between items-start gap-1">
-                                    <h4 id="cert5-title" contenteditable="false"
-                                        class="font-bold text-slate-950 text-[11px]">Data Analytics Essentials</h4>
-                                    <button onclick="triggerLinkEdit('cert5')"
-                                        class="edit-indicator hidden text-indigo-600 hover:text-indigo-800 text-[10px] no-print">
-                                        <i class="fa-solid fa-pencil"></i>
-                                    </button>
-                                </div>
-                                <p id="cert5-issuer" contenteditable="false" class="text-[10px] text-slate-500">Cisco
-                                    &bull; Oct 2025</p>
-                            </div>
-                            <div class="mt-1.5 text-right">
-                                <a id="link-cert5"
-                                    href="https://drive.google.com/file/d/1V6quB-ANl68BDgbeAX1Ez5oQQwZ7vYkV/view?usp=drive_link"
-                                    target="_blank"
-                                    class="text-indigo-600 hover:text-indigo-800 text-[10px] font-semibold tracking-wide flex items-center justify-end gap-1">
-                                    View Certificate <i class="fa-solid fa-chevron-right text-[8px]"></i>
+                    <!-- EkaSruti -->
+                    <div class="project-entry" id="project-5">
+                        <div class="project-header">
+                            <h3 class="project-title" id="p5-title" contenteditable="false">EkaSruti</h3>
+                            <div class="project-actions">
+                                <button onclick="openEditModal(5)" class="project-edit-btn no-print">
+                                    <i class="fa-solid fa-pencil"></i> Edit Link
+                                </button>
+                                <a href="https://ekasruti-bigbugs.vercel.app/" id="p5-link" target="_blank"
+                                    class="project-link-btn">
+                                    <i class="fa-solid fa-arrow-up-right-from-square"></i> Project Link
                                 </a>
                             </div>
                         </div>
+                        <p class="project-desc" id="p5-desc" contenteditable="false">
+                            Built an AI-based system converting live speech into multilingual captions, simplifying
+                            complex text processing pipelines, and integrating seamlessly with diverse digital and
+                            offline platforms. Used speech recognition and NLP techniques to support real-time
+                            transcription and accessibility.
+                        </p>
+                    </div>
 
-                        <!-- Google Technical Support -->
-                        <div
-                            class="p-2.5 border border-slate-200 rounded-xs hover:bg-slate-50 transition-colors flex flex-col justify-between">
-                            <div>
-                                <div class="flex justify-between items-start gap-1">
-                                    <h4 id="cert6-title" contenteditable="false"
-                                        class="font-bold text-slate-955 text-[11px]">Technical Support Fundamentals</h4>
-                                    <button onclick="triggerLinkEdit('cert6')"
-                                        class="edit-indicator hidden text-indigo-600 hover:text-indigo-800 text-[10px] no-print">
-                                        <i class="fa-solid fa-pencil"></i>
-                                    </button>
-                                </div>
-                                <p id="cert6-issuer" contenteditable="false" class="text-[10px] text-slate-500">Google
-                                    &bull; Nov 2024</p>
+                </div>
+            </section>
+
+            <!-- 3. Certifications -->
+            <section class="section">
+                <div class="section-header">
+                    <i class="fa-solid fa-award"></i>
+                    <h2>Certifications</h2>
+                </div>
+
+                <div class="cert-grid">
+                    <!-- Programming & Data Science -->
+                    <div class="cert-card">
+                        <div>
+                            <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:4px">
+                                <h4 id="cert2-title" contenteditable="false" class="cert-title">Programming & Data Science</h4>
+                                <button onclick="triggerLinkEdit('cert2')"
+                                    class="edit-indicator no-print" style="display:none;background:none;border:none;color:var(--accent);cursor:pointer;font-size:9px">
+                                    <i class="fa-solid fa-pencil"></i>
+                                </button>
                             </div>
-                            <div class="mt-1.5 text-right">
-                                <a id="link-cert6"
-                                    href="https://drive.google.com/file/d/1mytXbLnlyqE6pqg353DLkGNtreBJNiAQ/view?usp=sharing"
-                                    target="_blank"
-                                    class="text-indigo-600 hover:text-indigo-800 text-[10px] font-semibold tracking-wide flex items-center justify-end gap-1">
-                                    View Certificate <i class="fa-solid fa-chevron-right text-[8px]"></i>
-                                </a>
+                            <p id="cert2-issuer" contenteditable="false" class="cert-issuer">IIT Madras &bull; Dec 2025</p>
+                        </div>
+                        <a id="link-cert2"
+                            href="https://drive.google.com/file/d/1xgw8WbHLTf0vubeDi5eOO1WLGqeQBLPc/view?usp=sharing"
+                            target="_blank" class="cert-link">
+                            View Certificate <i class="fa-solid fa-chevron-right" style="font-size:7px"></i>
+                        </a>
+                    </div>
+
+                    <!-- Responsive Web Design -->
+                    <div class="cert-card">
+                        <div>
+                            <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:4px">
+                                <h4 id="cert3-title" contenteditable="false" class="cert-title">Responsive Web Design</h4>
+                                <button onclick="triggerLinkEdit('cert3')"
+                                    class="edit-indicator no-print" style="display:none;background:none;border:none;color:var(--accent);cursor:pointer;font-size:9px">
+                                    <i class="fa-solid fa-pencil"></i>
+                                </button>
                             </div>
+                            <p id="cert3-issuer" contenteditable="false" class="cert-issuer">freeCodeCamp &bull; Feb 2025</p>
                         </div>
-                    </div>
-                </section>
-
-                <!-- 3. Key Projects Section -->
-                <section>
-                    <div class="flex items-center gap-2 mb-3 border-b-2 border-slate-900 pb-1">
-                        <h2 class="text-xs font-bold uppercase tracking-wider text-slate-950">Key Projects</h2>
+                        <a id="link-cert3"
+                            href="https://drive.google.com/file/d/1hyEqGvf-JyRuzj2jyxpZMitpdjdwX3SL/view?usp=sharing"
+                            target="_blank" class="cert-link">
+                            View Certificate <i class="fa-solid fa-chevron-right" style="font-size:7px"></i>
+                        </a>
                     </div>
 
-                    <div id="projects-container" class="space-y-4">
-
-                        <!-- InstantBI -->
-                        <div class="group relative pb-3 border-b border-slate-100 last:border-b-0" id="project-3">
-                            <div class="flex justify-between items-start flex-wrap gap-2">
-                                <h3 class="font-bold text-slate-900 text-[13px] hover:text-indigo-600 transition-colors"
-                                    id="p3-title" contenteditable="false">InstantBI</h3>
-                                <div class="flex items-center gap-2">
-                                    <button onclick="openEditModal(3)"
-                                        class="text-indigo-600 hover:text-indigo-800 text-[10px] font-semibold flex items-center gap-1 bg-slate-100 px-2 py-0.5 rounded border border-slate-200 cursor-pointer no-print">
-                                        <i class="fa-solid fa-pencil"></i> Edit Link
-                                    </button>
-                                    <a href="https://instant-bi.vercel.app/" id="p3-link" target="_blank"
-                                        class="text-slate-500 hover:text-slate-700 text-[10px] font-semibold bg-slate-50 px-2 py-0.5 rounded border border-slate-150 flex items-center gap-1">
-                                        <i class="fa-solid fa-arrow-up-right-from-square"></i> Project Link
-                                    </a>
-                                </div>
+                    <!-- Postman API Fundamentals -->
+                    <div class="cert-card">
+                        <div>
+                            <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:4px">
+                                <h4 id="cert4-title" contenteditable="false" class="cert-title">Postman API Fundamentals</h4>
+                                <button onclick="triggerLinkEdit('cert4')"
+                                    class="edit-indicator no-print" style="display:none;background:none;border:none;color:var(--accent);cursor:pointer;font-size:9px">
+                                    <i class="fa-solid fa-pencil"></i>
+                                </button>
                             </div>
-                            <p class="text-slate-600 text-[11px] mt-1 leading-relaxed text-justify" id="p3-desc"
-                                contenteditable="false">
-                                Developed a full-stack AI-powered analytics platform enabling users to upload datasets,
-                                query data using natural language, and generate interactive dashboards. Designed RESTful
-                                backend APIs, implemented SQL-based data processing workflows, and integrated
-                                LLM-assisted query interpretation to deliver scalable analytical solutions.
-                            </p>
+                            <p id="cert4-issuer" contenteditable="false" class="cert-issuer">Postman &bull; March 2025</p>
                         </div>
+                        <a id="link-cert4"
+                            href="https://drive.google.com/file/d/1dnCJynq2C9WcwM6msGBRI4NUqrzgKs8F/view?usp=sharing"
+                            target="_blank" class="cert-link">
+                            View Certificate <i class="fa-solid fa-chevron-right" style="font-size:7px"></i>
+                        </a>
+                    </div>
 
-
-                        <!-- SAKSHYA -->
-                        <div class="group relative pb-3 border-b border-slate-100 last:border-b-0" id="project-2">
-                            <div class="flex justify-between items-start flex-wrap gap-2">
-                                <h3 class="font-bold text-slate-900 text-[13px] hover:text-indigo-600 transition-colors"
-                                    id="p2-title" contenteditable="false">SAKSHYA</h3>
-                                <div class="flex items-center gap-2">
-                                    <button onclick="openEditModal(2)"
-                                        class="text-indigo-600 hover:text-indigo-800 text-[10px] font-semibold flex items-center gap-1 bg-slate-100 px-2 py-0.5 rounded border border-slate-200 cursor-pointer no-print">
-                                        <i class="fa-solid fa-pencil"></i> Edit Link
-                                    </button>
-                                    <a href="https://sakshya-frontend.vercel.app/" id="p2-link" target="_blank"
-                                        class="text-slate-500 hover:text-slate-700 text-[10px] font-semibold bg-slate-50 px-2 py-0.5 rounded border border-slate-150 flex items-center gap-1">
-                                        <i class="fa-solid fa-arrow-up-right-from-square"></i> Project Link
-                                    </a>
-                                </div>
+                    <!-- Data Analytics Essentials -->
+                    <div class="cert-card">
+                        <div>
+                            <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:4px">
+                                <h4 id="cert5-title" contenteditable="false" class="cert-title">Data Analytics Essentials</h4>
+                                <button onclick="triggerLinkEdit('cert5')"
+                                    class="edit-indicator no-print" style="display:none;background:none;border:none;color:var(--accent);cursor:pointer;font-size:9px">
+                                    <i class="fa-solid fa-pencil"></i>
+                                </button>
                             </div>
-                            <p class="text-slate-600 text-[11px] mt-1 leading-relaxed text-justify" id="p2-desc"
-                                contenteditable="false">
-                                Developed an AI-powered legal document analysis platform for processing court judgment
-                                PDFs and extracting actionable legal insights. Designed backend services for document
-                                processing, integrated LLM-based information extraction, and built scalable APIs to
-                                support efficient legal document analysis.
-                            </p>
+                            <p id="cert5-issuer" contenteditable="false" class="cert-issuer">Cisco &bull; Oct 2025</p>
                         </div>
+                        <a id="link-cert5"
+                            href="https://drive.google.com/file/d/1V6quB-ANl68BDgbeAX1Ez5oQQwZ7vYkV/view?usp=drive_link"
+                            target="_blank" class="cert-link">
+                            View Certificate <i class="fa-solid fa-chevron-right" style="font-size:7px"></i>
+                        </a>
+                    </div>
 
-
-
-                        <!-- MediMitra -->
-                        <div class="group relative pb-3 border-b border-slate-100 last:border-b-0" id="project-4">
-                            <div class="flex justify-between items-start flex-wrap gap-2">
-                                <h3 class="font-bold text-slate-900 text-[13px] hover:text-indigo-600 transition-colors"
-                                    id="p4-title" contenteditable="false">MediMitra</h3>
-                                <div class="flex items-center gap-2">
-                                    <button onclick="openEditModal(4)"
-                                        class="text-indigo-600 hover:text-indigo-800 text-[10px] font-semibold flex items-center gap-1 bg-slate-100 px-2 py-0.5 rounded border border-slate-200 cursor-pointer no-print">
-                                        <i class="fa-solid fa-pencil"></i> Edit Link
-                                    </button>
-                                    <a href="https://medi-mitra-two.vercel.app/" id="p4-link" target="_blank"
-                                        class="text-slate-500 hover:text-slate-700 text-[10px] font-semibold bg-slate-50 px-2 py-0.5 rounded border border-slate-150 flex items-center gap-1">
-                                        <i class="fa-solid fa-arrow-up-right-from-square"></i> Project Link
-                                    </a>
-                                </div>
+                    <!-- Technical Support Fundamentals -->
+                    <div class="cert-card">
+                        <div>
+                            <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:4px">
+                                <h4 id="cert6-title" contenteditable="false" class="cert-title">Technical Support Fundamentals</h4>
+                                <button onclick="triggerLinkEdit('cert6')"
+                                    class="edit-indicator no-print" style="display:none;background:none;border:none;color:var(--accent);cursor:pointer;font-size:9px">
+                                    <i class="fa-solid fa-pencil"></i>
+                                </button>
                             </div>
-                            <p class="text-slate-600 text-[11px] mt-1 leading-relaxed text-justify" id="p4-desc"
-                                contenteditable="false">
-                                Built a cross-platform medicine reminder application with secure user authentication,
-                                cloud data storage, and real-time notification services. Designed scalable backend
-                                integration using Firebase while delivering an intuitive user experience for medication
-                                management.
-                            </p>
+                            <p id="cert6-issuer" contenteditable="false" class="cert-issuer">Google &bull; Nov 2024</p>
                         </div>
-
-                        <!-- EkaSruti -->
-                        <div class="group relative pb-3" id="project-5">
-                            <div class="flex justify-between items-start flex-wrap gap-2">
-                                <h3 class="font-bold text-slate-900 text-[13px] hover:text-indigo-600 transition-colors"
-                                    id="p5-title" contenteditable="false">EkaSruti</h3>
-                                <div class="flex items-center gap-2">
-                                    <button onclick="openEditModal(5)"
-                                        class="text-indigo-600 hover:text-indigo-800 text-[10px] font-semibold flex items-center gap-1 bg-slate-100 px-2 py-0.5 rounded border border-slate-200 cursor-pointer no-print">
-                                        <i class="fa-solid fa-pencil"></i> Edit Link
-                                    </button>
-                                    <a href="https://ekasruti-bigbugs.vercel.app/" id="p5-link" target="_blank"
-                                        class="text-slate-500 hover:text-slate-700 text-[10px] font-semibold bg-slate-50 px-2 py-0.5 rounded border border-slate-150 flex items-center gap-1">
-                                        <i class="fa-solid fa-arrow-up-right-from-square"></i> Project Link
-                                    </a>
-                                </div>
-                            </div>
-                            <p class="text-slate-600 text-[11px] mt-1 leading-relaxed text-justify" id="p5-desc"
-                                contenteditable="false">
-                                Developed a real-time multilingual speech processing application using speech
-                                recognition and NLP techniques. Designed an efficient processing pipeline for live
-                                transcription while improving accessibility across digital and offline communication
-                                platforms.
-                            </p>
-                        </div>
-
-
-
-
+                        <a id="link-cert6"
+                            href="https://drive.google.com/file/d/1mytXbLnlyqE6pqg353DLkGNtreBJNiAQ/view?usp=sharing"
+                            target="_blank" class="cert-link">
+                            View Certificate <i class="fa-solid fa-chevron-right" style="font-size:7px"></i>
+                        </a>
                     </div>
-                </section>
-            </div>
+                </div>
+            </section>
 
-            <!-- Right Grid (Technical Highlights & Core Meta) -->
-            <div class="lg:col-span-4 space-y-6">
+            <!-- 4. Research Papers (NEW) -->
+            <section class="section">
+                <div class="section-header">
+                    <i class="fa-solid fa-flask"></i>
+                    <h2>Research Papers</h2>
+                </div>
 
-                <!-- Executive Summary -->
-                <section>
-                    <div class="flex items-center gap-2 mb-3 border-b-2 border-slate-900 pb-1">
-                        <h2 class="text-xs font-bold uppercase tracking-wider text-slate-950">Summary</h2>
-                    </div>
-                    <p id="user-summary" contenteditable="false"
-                        class="text-slate-600 text-[11px] leading-relaxed text-justify font-normal">
-                        B.Tech Information Technology undergraduate and IIT Madras B.S. Data Science student with strong
-                        foundations in Machine Learning, Data Analysis, Statistics, SQL, and Python. Experienced in
-                        developing AI-powered applications that leverage data processing, natural language processing,
-                        and analytical workflows to solve real-world problems. Passionate about transforming complex
-                        datasets into actionable insights through machine learning, visualization, and scalable
-                        data-driven solutions while continuously exploring innovative approaches to improve user and
-                        business outcomes.
-                    </p>
-                </section>
+                <div id="papers-container">
 
-                <!--skills-->
-
-                <section>
-  <div class="flex items-center gap-2 mb-3 border-b-2 border-slate-900 pb-1">
-    <h2 class="text-xs font-bold uppercase tracking-wider text-slate-950">Programming Languages</h2>
-  </div>
-  <div class="skills-list flex flex-wrap gap-1.5">
-    <span class="skill-badge bg-slate-50 text-slate-800 text-[10px] font-medium px-2 py-1 rounded border border-slate-200 flex items-center gap-1 group"><span contenteditable="false">Python</span><button onclick="removeSkill(this)" class="edit-indicator hidden text-red-500 hover:text-red-700 font-bold ml-1 text-[10px] no-print">×</button></span>
-    <span class="skill-badge bg-slate-50 text-slate-800 text-[10px] font-medium px-2 py-1 rounded border border-slate-200 flex items-center gap-1 group"><span contenteditable="false">C++</span><button onclick="removeSkill(this)" class="edit-indicator hidden text-red-500 hover:text-red-700 font-bold ml-1 text-[10px] no-print">×</button></span>
-  </div>
-  <div class="add-btn-container mt-3 no-print">
-    <div class="flex gap-2">
-      <input type="text" placeholder="Type new skill..." class="border border-slate-300 rounded px-2 py-1 text-xs focus:ring-1 focus:ring-indigo-500 focus:outline-none w-full">
-      <button onclick="addNewSkill(this)" class="bg-indigo-600 hover:bg-indigo-700 text-white text-xs px-3 py-1 rounded font-semibold cursor-pointer">+ Add</button>
-    </div>
-  </div>
-</section>
-<section>
-  <div class="flex items-center gap-2 mb-3 border-b-2 border-slate-900 pb-1"><h2 class="text-xs font-bold uppercase tracking-wider text-slate-950">Software Engineering</h2></div>
-  <div class="skills-list flex flex-wrap gap-1.5">
-    <span class="skill-badge bg-slate-50 text-slate-800 text-[10px] font-medium px-2 py-1 rounded border border-slate-200 flex items-center gap-1 group"><span contenteditable="false">Object-Oriented Programming (OOP)</span><button onclick="removeSkill(this)" class="edit-indicator hidden text-red-500 hover:text-red-700 font-bold ml-1 text-[10px] no-print">×</button></span>
-    <span class="skill-badge bg-slate-50 text-slate-800 text-[10px] font-medium px-2 py-1 rounded border border-slate-200 flex items-center gap-1 group"><span contenteditable="false">Data Structures &amp; Algorithms</span><button onclick="removeSkill(this)" class="edit-indicator hidden text-red-500 hover:text-red-700 font-bold ml-1 text-[10px] no-print">×</button></span>
-  </div>
-  <div class="add-btn-container mt-3 no-print"><div class="flex gap-2"><input type="text" placeholder="Type new skill..." class="border border-slate-300 rounded px-2 py-1 text-xs focus:ring-1 focus:ring-indigo-500 focus:outline-none w-full"><button onclick="addNewSkill(this)" class="bg-indigo-600 hover:bg-indigo-700 text-white text-xs px-3 py-1 rounded font-semibold cursor-pointer">+ Add</button></div></div>
-</section>
-<section><div class="flex items-center gap-2 mb-3 border-b-2 border-slate-900 pb-1"><h2 class="text-xs font-bold uppercase tracking-wider text-slate-950">Backend Development</h2></div><div class="skills-list flex flex-wrap gap-1.5"><span class="skill-badge bg-slate-50 text-slate-800 text-[10px] font-medium px-2 py-1 rounded border border-slate-200 flex items-center gap-1 group"><span contenteditable="false">Flask</span><button onclick="removeSkill(this)" class="edit-indicator hidden text-red-500 hover:text-red-700 font-bold ml-1 text-[10px] no-print">×</button></span><span class="skill-badge bg-slate-50 text-slate-800 text-[10px] font-medium px-2 py-1 rounded border border-slate-200 flex items-center gap-1 group"><span contenteditable="false">REST APIs</span><button onclick="removeSkill(this)" class="edit-indicator hidden text-red-500 hover:text-red-700 font-bold ml-1 text-[10px] no-print">×</button></span></div><div class="add-btn-container mt-3 no-print"><div class="flex gap-2"><input type="text" placeholder="Type new skill..." class="border border-slate-300 rounded px-2 py-1 text-xs focus:ring-1 focus:ring-indigo-500 focus:outline-none w-full"><button onclick="addNewSkill(this)" class="bg-indigo-600 hover:bg-indigo-700 text-white text-xs px-3 py-1 rounded font-semibold cursor-pointer">+ Add</button></div></div></section>
-
-<section><div class="flex items-center gap-2 mb-3 border-b-2 border-slate-900 pb-1"><h2 class="text-xs font-bold uppercase tracking-wider text-slate-950">Frontend Development</h2></div><div class="skills-list flex flex-wrap gap-1.5"><span class="skill-badge bg-slate-50 text-slate-800 text-[10px] font-medium px-2 py-1 rounded border border-slate-200 flex items-center gap-1 group"><span contenteditable="false">React</span><button onclick="removeSkill(this)" class="edit-indicator hidden text-red-500 hover:text-red-700 font-bold ml-1 text-[10px] no-print">×</button></span><span class="skill-badge bg-slate-50 text-slate-800 text-[10px] font-medium px-2 py-1 rounded border border-slate-200 flex items-center gap-1 group"><span contenteditable="false">Tailwind CSS</span><button onclick="removeSkill(this)" class="edit-indicator hidden text-red-500 hover:text-red-700 font-bold ml-1 text-[10px] no-print">×</button></span></div><div class="add-btn-container mt-3 no-print"><div class="flex gap-2"><input type="text" placeholder="Type new skill..." class="border border-slate-300 rounded px-2 py-1 text-xs focus:ring-1 focus:ring-indigo-500 focus:outline-none w-full"><button onclick="addNewSkill(this)" class="bg-indigo-600 hover:bg-indigo-700 text-white text-xs px-3 py-1 rounded font-semibold cursor-pointer">+ Add</button></div></div></section>
-
-<section><div class="flex items-center gap-2 mb-3 border-b-2 border-slate-900 pb-1"><h2 class="text-xs font-bold uppercase tracking-wider text-slate-950">Databases</h2></div><div class="skills-list flex flex-wrap gap-1.5"><span class="skill-badge ..."><span contenteditable="false">SQL</span></span><span class="skill-badge ..."><span contenteditable="false">SQLAlchemy</span></span></div><div class="add-btn-container mt-3 no-print"><div class="flex gap-2"><input type="text" placeholder="Type new skill..." class="border border-slate-300 rounded px-2 py-1 text-xs focus:ring-1 focus:ring-indigo-500 focus:outline-none w-full"><button onclick="addNewSkill(this)" class="bg-indigo-600 hover:bg-indigo-700 text-white text-xs px-3 py-1 rounded font-semibold cursor-pointer">+ Add</button></div></div></section>
-<section><div class="flex items-center gap-2 mb-3 border-b-2 border-slate-900 pb-1"><h2 class="text-xs font-bold uppercase tracking-wider text-slate-950">AI &amp; Machine Learning</h2></div><div class="skills-list flex flex-wrap gap-1.5"><span class="skill-badge ..."><span contenteditable="false">Machine Learning</span></span><span class="skill-badge ..."><span contenteditable="false">Data Analysis</span></span></div><div class="add-btn-container mt-3 no-print"><div class="flex gap-2"><input type="text" placeholder="Type new skill..." class="border border-slate-300 rounded px-2 py-1 text-xs focus:ring-1 focus:ring-indigo-500 focus:outline-none w-full"><button onclick="addNewSkill(this)" class="bg-indigo-600 hover:bg-indigo-700 text-white text-xs px-3 py-1 rounded font-semibold cursor-pointer">+ Add</button></div></div></section>
-                <!-- Languages Communication Section -->
-                <section>
-                    <div class="flex items-center gap-2 mb-3 border-b-2 border-slate-900 pb-1">
-                        <h2 class="text-xs font-bold uppercase tracking-wider text-slate-950">Languages</h2>
-                    </div>
-                    <div class="flex flex-col gap-1 text-[11px] font-semibold text-slate-700">
-                        <span class="flex items-center gap-2"><i
-                                class="fa-solid fa-circle text-[5px] text-indigo-600"></i> <span id="lang1"
-                                contenteditable="false">English</span></span>
-                        <span class="flex items-center gap-2"><i
-                                class="fa-solid fa-circle text-[5px] text-indigo-600"></i> <span id="lang2"
-                                contenteditable="false">Hindi</span></span>
-                    </div>
-                </section>
-
-                <!-- Creative Hobbies Section -->
-                <section>
-                    <div class="flex items-center gap-2 mb-3 border-b-2 border-slate-900 pb-1">
-                        <h2 class="text-xs font-bold uppercase tracking-wider text-slate-950">Hobbies</h2>
-                    </div>
-                    <div class="space-y-1.5 text-[11px] font-medium text-slate-700">
-                        <div class="flex items-center gap-2 bg-slate-50 border border-slate-200 p-2 rounded-xs">
-                            <i class="fa-solid fa-palette text-indigo-600 text-xs"></i>
-                            <span id="hobby1" contenteditable="false">Painting</span>
-                        </div>
-                        <div class="flex items-center gap-2 bg-slate-50 border border-slate-200 p-2 rounded-xs">
-                            <i class="fa-solid fa-pen-nib text-indigo-600 text-xs"></i>
-                            <span id="hobby2" contenteditable="false">Story Writing</span>
+                    <!-- Paper 1 -->
+                    <div class="paper-entry" id="paper-1">
+                        <h4 class="paper-title" id="rp1-title" contenteditable="false">
+                            Your Research Paper Title Here
+                        </h4>
+                        <p class="paper-venue" id="rp1-venue" contenteditable="false">
+                            Conference / Journal Name
+                        </p>
+                        <p class="paper-meta" id="rp1-meta" contenteditable="false">
+                            <i class="fa-regular fa-calendar"></i> Year &bull; Co-authors: Author 1, Author 2
+                        </p>
+                        <p class="paper-desc" id="rp1-desc" contenteditable="false">
+                            Brief description of your research — the problem studied, methodology applied,
+                            key findings or contributions, and the impact of the work.
+                        </p>
+                        <div style="display:flex;align-items:center;gap:8px;margin-top:5px">
+                            <a href="#" id="rp1-link" target="_blank" class="paper-link">
+                                <i class="fa-solid fa-arrow-up-right-from-square"></i> Read Paper
+                            </a>
+                            <button onclick="openPaperLinkEdit(1)" class="no-print"
+                                style="background:none;border:none;color:var(--accent);cursor:pointer;font-size:9px;font-weight:600;display:inline-flex;align-items:center;gap:3px">
+                                <i class="fa-solid fa-pencil"></i> Edit Link
+                            </button>
                         </div>
                     </div>
-                </section>
 
-            </div>
+                    <!-- Paper 2 -->
+                    <div class="paper-entry" id="paper-2">
+                        <h4 class="paper-title" id="rp2-title" contenteditable="false">
+                            Your Second Research Paper Title Here
+                        </h4>
+                        <p class="paper-venue" id="rp2-venue" contenteditable="false">
+                            Conference / Journal Name
+                        </p>
+                        <p class="paper-meta" id="rp2-meta" contenteditable="false">
+                            <i class="fa-regular fa-calendar"></i> Year &bull; Co-authors: Author 1, Author 2
+                        </p>
+                        <p class="paper-desc" id="rp2-desc" contenteditable="false">
+                            Brief description of your research — the problem studied, methodology applied,
+                            key findings or contributions, and the impact of the work.
+                        </p>
+                        <div style="display:flex;align-items:center;gap:8px;margin-top:5px">
+                            <a href="#" id="rp2-link" target="_blank" class="paper-link">
+                                <i class="fa-solid fa-arrow-up-right-from-square"></i> Read Paper
+                            </a>
+                            <button onclick="openPaperLinkEdit(2)" class="no-print"
+                                style="background:none;border:none;color:var(--accent);cursor:pointer;font-size:9px;font-weight:600;display:inline-flex;align-items:center;gap:3px">
+                                <i class="fa-solid fa-pencil"></i> Edit Link
+                            </button>
+                        </div>
+                    </div>
+
+                </div>
+            </section>
+
+            <!-- 5. Achievements -->
+            <section class="section">
+                <div class="section-header">
+                    <i class="fa-solid fa-trophy"></i>
+                    <h2>Achievements</h2>
+                </div>
+
+                <div class="achievement-entry">
+                    <div class="achievement-icon">
+                        <i class="fa-solid fa-medal"></i>
+                    </div>
+                    <div>
+                        <p class="achievement-title" contenteditable="false">AlgoYudh — DSA Challenge by IITM</p>
+                        <p class="achievement-desc" contenteditable="false">Secured 2<sup>nd</sup> rank among 1000+ participants.</p>
+                    </div>
+                </div>
+
+                <div class="achievement-entry">
+                    <div class="achievement-icon">
+                        <i class="fa-solid fa-medal"></i>
+                    </div>
+                    <div>
+                        <p class="achievement-title" contenteditable="false">Ideathon by IITM</p>
+                        <p class="achievement-desc" contenteditable="false">Secured 1<sup>st</sup> rank among 50+ teams.</p>
+                    </div>
+                </div>
+
+                <div class="achievement-entry">
+                    <div class="achievement-icon">
+                        <i class="fa-solid fa-medal"></i>
+                    </div>
+                    <div>
+                        <p class="achievement-title" contenteditable="false">GFG Hackfest, Kolkata</p>
+                        <p class="achievement-desc" contenteditable="false">Secured 4<sup>th</sup> rank among 50+ teams.</p>
+                    </div>
+                </div>
+
+                <div class="achievement-entry">
+                    <div class="achievement-icon">
+                        <i class="fa-solid fa-medal"></i>
+                    </div>
+                    <div>
+                        <p class="achievement-title" contenteditable="false">Elite Coders Winter of Code 2026</p>
+                        <p class="achievement-desc" contenteditable="false">Ranked 14<sup>th</sup> out of 5000+ participants in this open source contribution program.</p>
+                    </div>
+                </div>
+            </section>
 
         </div>
-
-        <!-- Achievements Section -->
-        <section class="mt-8">
-            <div class="flex items-center gap-2 mb-3 border-b-2 border-slate-900 pb-1">
-                <h2 class="text-xs font-bold uppercase tracking-wider text-slate-950">
-                    Achievements
-                </h2>
-            </div>
-
-            <div class="space-y-3 text-[11px] text-slate-700">
-
-                <div class="flex items-start gap-3">
-
-                    <div>
-                        <p class="font-semibold">
-                            AlgoYudh- DSA challenge by IITM
-                        </p>
-                        <p class="text-slate-600">
-                            Secured 2<sup>nd</sup> rank among 1000+ participants.
-                        </p>
-                    </div>
-                </div>
-
-                <div class="flex items-start gap-3">
-
-                    <div>
-                        <p class="font-semibold">
-                            Ideathon by IITM
-                        </p>
-                        <p class="text-slate-600">
-                            Secured 1<sup>st</sup> rank among 50+ teams.
-                        </p>
-                    </div>
-                </div>
-
-                <div class="flex items-start gap-3">
-
-                    <div>
-                        <p class="font-semibold">
-                            GFG Hackfest, Kolkata
-                        </p>
-                        <p class="text-slate-600">
-                            Secured 4<sup>th</sup> rank among 50+ teams.
-                        </p>
-                    </div>
-                </div>
-
-                <div class="flex items-start gap-3">
-
-                    <div>
-                        <p class="font-semibold">
-                            Elite Coders Winter of Code 2026 (Open Source Contribution Program)
-                        </p>
-                        <p class="text-slate-600">
-                            Ranked 14<sup>th</sup> out of 5000+ participants.
-                        </p>
-                    </div>
-                </div>
-
-            </div>
-        </section>
     </main>
 
-    <!-- Global URL/Link Configuration Modal -->
-    <div id="editModal"
-        class="fixed inset-0 bg-slate-900/60 backdrop-blur-xs flex items-center justify-center p-4 hidden z-50 no-print">
-        <div class="bg-white rounded-lg shadow-xl border border-slate-200 max-w-md w-full overflow-hidden">
-            <div class="bg-slate-900 p-4 text-white flex justify-between items-center">
-                <h3 class="font-bold text-xs flex items-center gap-2" id="modal-heading">
-                    <i class="fa-solid fa-link text-indigo-400"></i> Configure Target Link URL
+    <!-- ===== URL/Link Configuration Modal ===== -->
+    <div id="editModal" class="modal-overlay hidden no-print">
+        <div class="modal-box">
+            <div class="modal-header">
+                <h3 id="modal-heading">
+                    <i class="fa-solid fa-link"></i> Configure Target Link URL
                 </h3>
-                <button onclick="closeEditModal()"
-                    class="text-slate-400 hover:text-white transition-colors cursor-pointer">
-                    <i class="fa-solid fa-xmark text-lg"></i>
+                <button class="modal-close" onclick="closeEditModal()">
+                    <i class="fa-solid fa-xmark"></i>
                 </button>
             </div>
-            <div class="p-5 space-y-4">
+            <div class="modal-body">
                 <input type="hidden" id="current-edit-type">
                 <input type="hidden" id="current-edit-id">
-
-                <div>
-                    <label id="input-label"
-                        class="block text-[10px] font-bold text-slate-500 uppercase tracking-wider mb-1">Target Address
-                        (URL)</label>
-                    <input type="url" id="edit-link-url"
-                        class="w-full border border-slate-300 rounded px-3 py-2 text-xs focus:ring-1 focus:ring-indigo-500 focus:outline-none"
-                        placeholder="https://">
-                </div>
+                <label id="input-label">Target Address (URL)</label>
+                <input type="url" id="edit-link-url" placeholder="https://">
             </div>
-            <div class="bg-slate-50 p-3.5 border-t border-slate-100 flex justify-end gap-2">
-                <button onclick="closeEditModal()"
-                    class="px-4 py-1.5 text-xs font-semibold text-slate-600 hover:text-slate-800 cursor-pointer">
-                    Cancel
-                </button>
-                <button onclick="saveLinkChanges()"
-                    class="px-4 py-1.5 bg-indigo-600 hover:bg-indigo-700 text-white rounded text-xs font-semibold shadow-xs cursor-pointer">
-                    Save Link
-                </button>
+            <div class="modal-footer">
+                <button class="btn-cancel" onclick="closeEditModal()">Cancel</button>
+                <button class="btn-save" onclick="saveLinkChanges()">Save Link</button>
             </div>
         </div>
     </div>
 
-    <!-- Interactivity Controller Script -->
+    <!-- ===== Interactivity Script ===== -->
     <script>
         let isEditMode = false;
 
@@ -828,44 +1826,45 @@
             const btnText = document.getElementById('editBtnText');
             const editIcon = document.getElementById('editIcon');
 
-            // Collect all interactive elements
             const editableElements = mainDoc.querySelectorAll('[contenteditable]');
 
             if (isEditMode) {
                 mainDoc.classList.add('edit-active');
-                toggleBtn.classList.remove('bg-slate-800');
-                toggleBtn.classList.add('bg-indigo-600');
+                toggleBtn.classList.remove('btn-dark');
+                toggleBtn.classList.add('btn-accent');
                 btnText.innerText = "Turn OFF Edit Mode";
-                editIcon.className = "fa-solid fa-circle-check text-white animate-pulse";
+                editIcon.className = "fa-solid fa-circle-check";
+                editIcon.style.color = "#fff";
 
                 editableElements.forEach(el => {
                     el.setAttribute('contenteditable', 'true');
                 });
 
-                showToast("Visual edit mode configured! Click on any text block on the page to modify.");
+                showToast("Edit mode ON — click any text block to modify!");
             } else {
                 mainDoc.classList.remove('edit-active');
-                toggleBtn.classList.remove('bg-indigo-600');
-                toggleBtn.classList.add('bg-slate-800');
+                toggleBtn.classList.remove('btn-accent');
+                toggleBtn.classList.add('btn-dark');
                 btnText.innerText = "Turn ON Edit Mode";
-                editIcon.className = "fa-solid fa-pen-to-square text-indigo-400";
+                editIcon.className = "fa-solid fa-pen-to-square";
+                editIcon.style.color = "var(--sidebar-accent-light)";
 
                 editableElements.forEach(el => {
                     el.setAttribute('contenteditable', 'false');
                 });
 
-                showToast("Edit mode disabled. Ready for standard export!");
+                showToast("Edit mode disabled. Ready for export!");
             }
         }
 
-        // Show standard action toast
+        // Show toast notification
         function showToast(message) {
             const toast = document.getElementById('toast');
             document.getElementById('toast-message').innerText = message;
-            toast.classList.remove('translate-y-20', 'opacity-0');
+            toast.classList.add('visible');
 
             setTimeout(() => {
-                toast.classList.add('translate-y-20', 'opacity-0');
+                toast.classList.remove('visible');
             }, 4500);
         }
 
@@ -874,35 +1873,45 @@
             document.getElementById('current-edit-id').value = elementKey;
 
             if (elementKey.startsWith('cert')) {
-                // Handling Certificate Verifications
                 document.getElementById('current-edit-type').value = 'certificate';
                 const linkHref = document.getElementById(`link-${elementKey}`).getAttribute('href');
                 document.getElementById('edit-link-url').value = linkHref === '#' ? '' : linkHref;
-                document.getElementById('modal-heading').innerHTML = `<i class="fa-solid fa-award text-indigo-400"></i> Edit Certification Verification Link`;
+                document.getElementById('modal-heading').innerHTML = `<i class="fa-solid fa-award" style="color:var(--sidebar-accent-light)"></i> Edit Certification Verification Link`;
             } else {
-                // Handling Top Header Social Profiles
                 document.getElementById('current-edit-type').value = 'social';
                 const linkHref = document.getElementById(`link-${elementKey}`).getAttribute('href');
                 document.getElementById('edit-link-url').value = linkHref;
-                document.getElementById('modal-heading').innerHTML = `<i class="fa-brands fa-square-share-nodes text-indigo-400"></i> Edit Social Profile URL`;
+                document.getElementById('modal-heading').innerHTML = `<i class="fa-brands fa-square-share-nodes" style="color:var(--sidebar-accent-light)"></i> Edit Social Profile URL`;
             }
 
             document.getElementById('editModal').classList.remove('hidden');
         }
 
-        // Project URL Editing Modal opener
+        // Project URL editing
         function openEditModal(projectId) {
             document.getElementById('current-edit-type').value = 'project';
             document.getElementById('current-edit-id').value = projectId;
 
             const linkHref = document.getElementById(`p${projectId}-link`).getAttribute('href');
             document.getElementById('edit-link-url').value = linkHref === '#' ? '' : linkHref;
-            document.getElementById('modal-heading').innerHTML = `<i class="fa-solid fa-code-fork text-indigo-400"></i> Edit Project Link URL`;
+            document.getElementById('modal-heading').innerHTML = `<i class="fa-solid fa-code-fork" style="color:var(--sidebar-accent-light)"></i> Edit Project Link URL`;
 
             document.getElementById('editModal').classList.remove('hidden');
         }
 
-        // Save URL adjustments to target element
+        // Research Paper URL editing
+        function openPaperLinkEdit(paperId) {
+            document.getElementById('current-edit-type').value = 'paper';
+            document.getElementById('current-edit-id').value = paperId;
+
+            const linkHref = document.getElementById(`rp${paperId}-link`).getAttribute('href');
+            document.getElementById('edit-link-url').value = linkHref === '#' ? '' : linkHref;
+            document.getElementById('modal-heading').innerHTML = `<i class="fa-solid fa-flask" style="color:var(--sidebar-accent-light)"></i> Edit Research Paper Link`;
+
+            document.getElementById('editModal').classList.remove('hidden');
+        }
+
+        // Save URL changes
         function saveLinkChanges() {
             const type = document.getElementById('current-edit-type').value;
             const id = document.getElementById('current-edit-id').value;
@@ -921,11 +1930,20 @@
             } else if (type === 'social') {
                 const linkElement = document.getElementById(`link-${id}`);
                 linkElement.setAttribute('href', targetUrl);
-                showToast(`${id.toUpperCase()} profile address successfully targeted!`);
+                showToast(`${id.toUpperCase()} profile address updated!`);
             } else if (type === 'certificate') {
                 const linkElement = document.getElementById(`link-${id}`);
                 linkElement.setAttribute('href', targetUrl);
                 showToast("Credential verification link updated!");
+            } else if (type === 'paper') {
+                const linkElement = document.getElementById(`rp${id}-link`);
+                linkElement.setAttribute('href', targetUrl);
+                if (targetUrl !== '#') {
+                    linkElement.innerHTML = `<i class="fa-solid fa-arrow-up-right-from-square"></i> Read Paper`;
+                } else {
+                    linkElement.innerHTML = `<i class="fa-solid fa-link-slash"></i> No Link`;
+                }
+                showToast("Research paper link updated!");
             }
 
             closeEditModal();
@@ -935,9 +1953,9 @@
             document.getElementById('editModal').classList.add('hidden');
         }
 
-        // Dynamic Badge Management (Add & Remove)
+        // Dynamic skill badge management
         function addNewSkill(btn) {
-            const section = btn.closest("section");
+            const section = btn.closest(".sidebar-section") || btn.closest("section");
             const input = section.querySelector("input[type='text']");
             const skillName = input.value.trim();
 
@@ -946,42 +1964,42 @@
             const list = section.querySelector(".skills-list");
 
             const badge = document.createElement("span");
-            badge.className =
-                "skill-badge bg-slate-50 text-slate-800 text-[10px] font-medium px-2 py-1 rounded border border-slate-200 flex items-center gap-1 group";
+            badge.className = "sidebar-skill-badge";
 
             badge.innerHTML = `
                 <span contenteditable="${isEditMode}">${skillName}</span>
                 <button onclick="removeSkill(this)"
-                    class="edit-indicator ${isEditMode ? "" : "hidden"} text-red-500 hover:text-red-700 font-bold ml-1 text-[10px] no-print">×</button>
+                    class="edit-indicator ${isEditMode ? "" : "hidden"} no-print"
+                    style="background:none;border:none;color:#ef4444;cursor:pointer;font-size:9px;margin-left:3px">×</button>
             `;
 
             list.appendChild(badge);
             input.value = "";
             showToast(`Skill "${skillName}" added.`);
         }
-        // Remove designated skill element
+
         function removeSkill(btnElement) {
-            const parentBadge = btnElement.closest('.skill-badge');
+            const parentBadge = btnElement.closest('.sidebar-skill-badge');
             if (parentBadge) {
                 parentBadge.remove();
                 showToast("Skill deleted.");
             }
         }
 
-        // Direct Local Image Loader Callback
+        // Photo upload
         function uploadPhoto(event) {
             const file = event.target.files[0];
             if (file) {
                 const reader = new FileReader();
                 reader.onload = function (e) {
                     document.getElementById('profile-img').src = e.target.result;
-                    showToast("Profile layout image imported!");
+                    showToast("Profile image imported!");
                 }
                 reader.readAsDataURL(file);
             }
         }
 
-        // Action sequence to secure cleanest layout for PDF generation
+        // Print / PDF
         function triggerPrint() {
             if (isEditMode) {
                 toggleEditMode();
