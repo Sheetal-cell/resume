@@ -929,6 +929,8 @@
                 border: none !important;
                 box-shadow: none !important;
                 border-radius: 0 !important;
+                display: flex !important;
+                flex-direction: row !important;
             }
 
             .sidebar {
@@ -1126,7 +1128,7 @@
         /* ================================
            RESPONSIVE
            ================================ */
-        @media (max-width: 768px) {
+        @media screen and (max-width: 768px) {
             .resume-canvas {
                 flex-direction: column;
             }
@@ -1566,6 +1568,49 @@
                         </p>
                     </div>
 
+                    <!-- Medical QA RAG System -->
+                    <div class="project-entry" id="project-6">
+                        <div class="project-header">
+                            <h3 class="project-title" id="p6-title" contenteditable="false">Medical QA RAG System</h3>
+                            <div class="project-actions">
+                                <button onclick="openEditModal(6)" class="project-edit-btn no-print">
+                                    <i class="fa-solid fa-pencil"></i> Edit Link
+                                </button>
+                                <a href="#" id="p6-link" target="_blank"
+                                    class="project-link-btn">
+                                    <i class="fa-solid fa-arrow-up-right-from-square"></i> Project Link
+                                </a>
+                            </div>
+                        </div>
+                        <p class="project-desc" id="p6-desc" contenteditable="false">
+                            Developed a citation-grounded medical question-answering system using RAG, ChromaDB,
+                            MiniLM embeddings, Knowledge Graphs, and QLoRA-fine-tuned Qwen2.5-1.5B, with source
+                            and page-level citations for reliable responses.
+                        </p>
+                    </div>
+
+                    <!-- TrailSync -->
+                    <div class="project-entry" id="project-7">
+                        <div class="project-header">
+                            <h3 class="project-title" id="p7-title" contenteditable="false">TrailSync</h3>
+                            <div class="project-actions">
+                                <button onclick="openEditModal(7)" class="project-edit-btn no-print">
+                                    <i class="fa-solid fa-pencil"></i> Edit Link
+                                </button>
+                                <a href="#" id="p7-link" target="_blank"
+                                    class="project-link-btn">
+                                    <i class="fa-solid fa-arrow-up-right-from-square"></i> Project Link
+                                </a>
+                            </div>
+                        </div>
+                        <p class="project-desc" id="p7-desc" contenteditable="false">
+                            Built a full-stack trekking management application that enables users to discover trails,
+                            plan treks, manage bookings, and track trip progress with an intuitive dashboard.
+                            Implemented end-to-end features including user authentication, route management,
+                            and real-time trip coordination.
+                        </p>
+                    </div>
+
                 </div>
             </section>
 
@@ -1683,20 +1728,22 @@
 
                 <div id="papers-container">
 
-                    <!-- Paper 1 -->
+                    <!-- Paper 1: Vision Transformer -->
                     <div class="paper-entry" id="paper-1">
                         <h4 class="paper-title" id="rp1-title" contenteditable="false">
-                            Your Research Paper Title Here
+                            An Image is Worth 16×16 Words: Transformers for Image Recognition at Scale
                         </h4>
                         <p class="paper-venue" id="rp1-venue" contenteditable="false">
-                            Conference / Journal Name
+                            Completed on Tensortomic
                         </p>
                         <p class="paper-meta" id="rp1-meta" contenteditable="false">
-                            <i class="fa-regular fa-calendar"></i> Year &bull; Co-authors: Author 1, Author 2
+                            <i class="fa-regular fa-calendar"></i> Dosovitskiy et al. &bull; Vision Transformer (ViT)
                         </p>
                         <p class="paper-desc" id="rp1-desc" contenteditable="false">
-                            Brief description of your research — the problem studied, methodology applied,
-                            key findings or contributions, and the impact of the work.
+                            Studied the Vision Transformer architecture that applies a pure transformer directly
+                            to sequences of image patches for image classification, achieving state-of-the-art
+                            results while eliminating the need for convolutional layers. Explored patch embedding,
+                            positional encoding, and multi-head self-attention mechanisms for visual recognition.
                         </p>
                         <div style="display:flex;align-items:center;gap:8px;margin-top:5px">
                             <a href="#" id="rp1-link" target="_blank" class="paper-link">
@@ -1709,20 +1756,22 @@
                         </div>
                     </div>
 
-                    <!-- Paper 2 -->
+                    <!-- Paper 2: Transformer-GAN Survey + CIFAR-10 Implementation -->
                     <div class="paper-entry" id="paper-2">
                         <h4 class="paper-title" id="rp2-title" contenteditable="false">
-                            Your Second Research Paper Title Here
+                            Transformer-based Generative Adversarial Networks in Computer Vision: A Comprehensive Survey
                         </h4>
                         <p class="paper-venue" id="rp2-venue" contenteditable="false">
-                            Conference / Journal Name
+                            CIFAR-10 Implementation &bull; ViT-GAN Architecture
                         </p>
                         <p class="paper-meta" id="rp2-meta" contenteditable="false">
-                            <i class="fa-regular fa-calendar"></i> Year &bull; Co-authors: Author 1, Author 2
+                            <i class="fa-regular fa-calendar"></i> Reference Survey Paper &bull; Practical Implementation
                         </p>
                         <p class="paper-desc" id="rp2-desc" contenteditable="false">
-                            Brief description of your research — the problem studied, methodology applied,
-                            key findings or contributions, and the impact of the work.
+                            Implemented a CIFAR-10 image generation pipeline from this survey on transformer-based
+                            GANs in computer vision. Built and trained a ViT-GAN model combining Vision Transformer
+                            discriminators with generative adversarial training, exploring how self-attention mechanisms
+                            improve image synthesis quality over traditional CNN-based GAN architectures.
                         </p>
                         <div style="display:flex;align-items:center;gap:8px;margin-top:5px">
                             <a href="#" id="rp2-link" target="_blank" class="paper-link">
@@ -1782,6 +1831,16 @@
                     <div>
                         <p class="achievement-title" contenteditable="false">Elite Coders Winter of Code 2026</p>
                         <p class="achievement-desc" contenteditable="false">Ranked 14<sup>th</sup> out of 5000+ participants in this open source contribution program.</p>
+                    </div>
+                </div>
+
+                <div class="achievement-entry">
+                    <div class="achievement-icon">
+                        <i class="fa-solid fa-medal"></i>
+                    </div>
+                    <div>
+                        <p class="achievement-title" contenteditable="false">AlgoQueen 2026 — ICPC Asia West Amritapuri</p>
+                        <p class="achievement-desc" contenteditable="false">Ranked 388<sup>th</sup> in the competitive programming contest.</p>
                     </div>
                 </div>
             </section>
