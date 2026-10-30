@@ -20,9 +20,9 @@
 .resume-canvas{max-width:850px;margin:auto;padding:32px 40px;background:#fff;border:1px solid #d7e0e8;box-shadow:0 2px 14px #102a430d;display:block}
 .resume-header{text-align:center;border-bottom:2px solid var(--accent);padding-bottom:9px;margin-bottom:12px}.resume-name{font-size:24px;color:var(--ink);margin:0 0 4px;letter-spacing:.2px}.resume-headline{font-size:10px;color:#40556d;margin:0 0 5px}.resume-contact{font-size:8.7px;line-height:1.5;margin:0;color:#40556d}.resume-contact a,.entry-date a,.cert-meta a{color:#087e8b;text-decoration:underline;text-underline-offset:2px}
 .resume-section{margin-bottom:9px;break-inside:avoid}.resume-section h2{font-size:10px;text-transform:uppercase;letter-spacing:.75px;color:var(--ink);border-bottom:1px solid #9fb7c7;padding-bottom:3px;margin:0 0 5px}
-.summary{font-size:8.8px;line-height:1.35;margin:0;text-align:justify}.entry{margin-bottom:4px;break-inside:avoid}.entry-head{display:flex;justify-content:space-between;align-items:baseline;gap:8px}.entry-title{font-size:9px;font-weight:700;color:#233b53;margin:0}.entry-date{font-size:8px;white-space:nowrap;color:var(--muted)}.entry-sub,.entry-desc{font-size:8.2px;line-height:1.3;margin:1px 0;color:#374151}.skill-line,.achievement{font-size:8.2px;line-height:1.3;margin:1px 0;color:#374151}.skill-line b{color:var(--ink)}.cert-entry{margin:0 0 3px;break-inside:avoid}.cert-title{font-size:8.5px;font-weight:700;color:#233b53;margin:0}.cert-meta{font-size:8px;color:#4b5563;margin:1px 0}.achievement-grid,.compact-grid{display:block}
+.summary{font-size:8.8px;line-height:1.35;margin:0;text-align:justify}.entry{margin-bottom:4px;break-inside:avoid}.entry-head{display:flex;justify-content:space-between;align-items:baseline;gap:8px}.entry-title{font-size:9px;font-weight:700;color:#233b53;margin:0}.entry-date{font-size:8px;white-space:nowrap;color:var(--muted)}.entry-sub,.entry-desc{font-size:8.2px;line-height:1.3;margin:1px 0;color:#374151}.skill-line,.achievement{font-size:8.2px;line-height:1.3;margin:1px 0;color:#374151}.skill-line b{color:var(--ink)}.cert-entry{margin:0 0 3px;break-inside:avoid}.cert-title{font-size:8.5px;font-weight:700;color:#233b53;margin:0}.cert-meta{font-size:8.5px;color:#4b5563;margin:2px 0}.cert-grid,.achievement-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));column-gap:18px;row-gap:7px}.cert-entry{padding:3px 0 5px;border-bottom:1px solid #e5ebf0}.achievement{padding:3px 0 5px;border-bottom:1px solid #e5ebf0;font-size:8.8px;line-height:1.4}.add-point-controls{display:none;margin-top:7px}.edit-active .add-point-controls{display:block}.add-point-btn{border:1px solid var(--accent);background:#f5fbfc;color:var(--ink);padding:5px 9px;font-size:8px;cursor:pointer;border-radius:3px}.add-point-btn:hover{background:#e6f4f5}
 .edit-active [contenteditable=true]{outline:1px dashed var(--accent);background:#f5fbfc}.toast{position:fixed;bottom:15px;right:15px;background:var(--ink);color:#fff;padding:10px;opacity:0}.toast.visible{opacity:1}.modal-overlay{position:fixed;inset:0;background:#0008;display:flex;align-items:center;justify-content:center}.modal-overlay.hidden{display:none}.modal-box{background:#fff;padding:18px}.modal-body input{width:100%;padding:8px}
-@media(max-width:650px){body{padding:8px}.resume-canvas{padding:20px 16px}.entry-head{display:block}.entry-date{display:block}}
+@media(max-width:650px){.cert-grid,.achievement-grid{grid-template-columns:1fr}body{padding:8px}.resume-canvas{padding:20px 16px}.entry-head{display:block}.entry-date{display:block}}
 @media print{@page{size:A4 portrait;margin:8mm}html,body{margin:0!important;padding:0!important;background:#fff!important;-webkit-print-color-adjust:exact;print-color-adjust:exact}.no-print,.control-bar,.toast,.modal-overlay,button,label{display:none!important}.resume-canvas{max-width:none!important;margin:0!important;padding:0!important;border:0!important;box-shadow:none!important}.resume-header{padding-bottom:6px;margin-bottom:7px}.resume-name{font-size:20px}.resume-headline,.resume-contact{font-size:7.8px}.resume-section{margin-bottom:6px}.resume-section h2{font-size:8.5px;margin-bottom:3px}.entry{margin-bottom:2px}.entry-title{font-size:7.8px}.entry-date,.entry-sub,.entry-desc,.skill-line,.achievement,.cert-meta{font-size:7.2px;line-height:1.2}.cert-title{font-size:7.5px}.resume-section,.entry,.cert-entry{break-inside:avoid;page-break-inside:avoid}a{color:#087e8b!important;text-decoration:underline!important}}
     </style>
 </head>
@@ -99,15 +99,15 @@
 <p class="skill-line" contenteditable="false"><b>Libraries:</b> PyTorch, TensorFlow, Hugging Face, Scikit-learn, Pandas, NumPy, Matplotlib, Seaborn, Flask, React, Tailwind CSS</p>
 <p class="skill-line" contenteditable="false"><b>Databases &amp; Tools:</b> SQLite, SQLAlchemy, ChromaDB, Firebase, REST APIs, Git, Postman, Google Colab</p>
 <p class="skill-line" contenteditable="false"><b>Languages:</b> English, Hindi</p></section>
-<section class="resume-section"><h2>Certifications</h2>
-<div class="cert-entry"><p class="cert-title">Programming &amp; Data Science</p><p class="cert-meta">IIT Madras | December 2025 | <a href="https://drive.google.com/file/d/1xgw8WbHLTf0vubeDi5eOO1WLGqeQBLPc/view?usp=sharing" target="_blank" rel="noopener">View Certificate</a></p></div>
-<div class="cert-entry"><p class="cert-title">Responsive Web Design</p><p class="cert-meta">freeCodeCamp | February 2025 | <a href="https://drive.google.com/file/d/1hyEqGvf-JyRuzj2jyxpZMitpdjdwX3SL/view?usp=sharing" target="_blank" rel="noopener">View Certificate</a></p></div>
-<div class="cert-entry"><p class="cert-title">Postman API Fundamentals</p><p class="cert-meta">Postman | March 2025 | <a href="https://drive.google.com/file/d/1dnCJynq2C9WcwM6msGBRI4NUqrzgKs8F/view?usp=sharing" target="_blank" rel="noopener">View Certificate</a></p></div>
-<div class="cert-entry"><p class="cert-title">Data Analytics Essentials</p><p class="cert-meta">Cisco | October 2025 | <a href="https://drive.google.com/file/d/1V6quB-ANl68BDgbeAX1Ez5oQQwZ7vYkV/view?usp=drive_link" target="_blank" rel="noopener">View Certificate</a></p></div>
-<div class="cert-entry"><p class="cert-title">Technical Support Fundamentals</p><p class="cert-meta">Google | November 2024 | <a href="https://drive.google.com/file/d/1mytXbLnlyqE6pqg353DLkGNtreBJNiAQ/view?usp=sharing" target="_blank" rel="noopener">View Certificate</a></p></div>
-</section>
-<section class="resume-section"><h2>Achievements</h2><div class="achievement-grid">
-<p class="achievement" contenteditable="false">AlgoYudh DSA Challenge, IIT Madras – 2nd of 1000+</p><p class="achievement" contenteditable="false">Ideathon, IIT Madras – 1st of 50+ teams</p><p class="achievement" contenteditable="false">GFG Hackfest, Kolkata – 4th of 50+ teams</p><p class="achievement" contenteditable="false">Elite Coders Winter of Code 2026 – 14th of 5000+</p><p class="achievement" contenteditable="false">AlgoQueen 2026, ICPC Asia West Amritapuri – 388th</p></div></section>
+<section class="resume-section"><h2>Certifications</h2><div class="cert-grid" id="certification-list">
+<div class="cert-entry"><p class="cert-title" contenteditable="false">Programming &amp; Data Science</p><p class="cert-meta" contenteditable="false">IIT Madras | December 2025 | <a href="https://drive.google.com/file/d/1xgw8WbHLTf0vubeDi5eOO1WLGqeQBLPc/view?usp=sharing" target="_blank" rel="noopener">View Certificate</a></p></div>
+<div class="cert-entry"><p class="cert-title" contenteditable="false">Responsive Web Design</p><p class="cert-meta" contenteditable="false">freeCodeCamp | February 2025 | <a href="https://drive.google.com/file/d/1hyEqGvf-JyRuzj2jyxpZMitpdjdwX3SL/view?usp=sharing" target="_blank" rel="noopener">View Certificate</a></p></div>
+<div class="cert-entry"><p class="cert-title" contenteditable="false">Postman API Fundamentals</p><p class="cert-meta" contenteditable="false">Postman | March 2025 | <a href="https://drive.google.com/file/d/1dnCJynq2C9WcwM6msGBRI4NUqrzgKs8F/view?usp=sharing" target="_blank" rel="noopener">View Certificate</a></p></div>
+<div class="cert-entry"><p class="cert-title" contenteditable="false">Data Analytics Essentials</p><p class="cert-meta" contenteditable="false">Cisco | October 2025 | <a href="https://drive.google.com/file/d/1V6quB-ANl68BDgbeAX1Ez5oQQwZ7vYkV/view?usp=drive_link" target="_blank" rel="noopener">View Certificate</a></p></div>
+<div class="cert-entry"><p class="cert-title" contenteditable="false">Technical Support Fundamentals</p><p class="cert-meta" contenteditable="false">Google | November 2024 | <a href="https://drive.google.com/file/d/1mytXbLnlyqE6pqg353DLkGNtreBJNiAQ/view?usp=sharing" target="_blank" rel="noopener">View Certificate</a></p></div>
+</div><div class="add-point-controls no-print"><button type="button" class="add-point-btn" onclick="addCertification()">+ Add Certification</button></div></section>
+<section class="resume-section"><h2>Achievements</h2><div class="achievement-grid" id="achievement-list">
+<p class="achievement" contenteditable="false">AlgoYudh DSA Challenge, IIT Madras – 2nd of 1000+</p><p class="achievement" contenteditable="false">Ideathon, IIT Madras – 1st of 50+ teams</p><p class="achievement" contenteditable="false">GFG Hackfest, Kolkata – 4th of 50+ teams</p><p class="achievement" contenteditable="false">Elite Coders Winter of Code 2026 – 14th of 5000+</p><p class="achievement" contenteditable="false">AlgoQueen 2026, ICPC Asia West Amritapuri – 388th</p></div><div class="add-point-controls no-print"><button type="button" class="add-point-btn" onclick="addAchievement()">+ Add Achievement</button></div></section>
 </main>
 
     <!-- ===== URL/Link Configuration Modal ===== -->
@@ -318,6 +318,48 @@
                 }
                 reader.readAsDataURL(file);
             }
+        }
+
+        // Add new resume entries while Edit Mode is enabled
+        function addCertification() {
+            const title = prompt("Certification name:");
+            if (!title || !title.trim()) return;
+            const provider = prompt("Issuing organization and date (e.g. Google | October 2026):") || "";
+            const url = prompt("Certificate URL (optional):") || "";
+
+            const item = document.createElement("div");
+            item.className = "cert-entry";
+            const heading = document.createElement("p");
+            heading.className = "cert-title";
+            heading.contentEditable = "true";
+            heading.textContent = title.trim();
+            const meta = document.createElement("p");
+            meta.className = "cert-meta";
+            meta.contentEditable = "true";
+            meta.appendChild(document.createTextNode(provider.trim()));
+            if (url.trim()) {
+                meta.appendChild(document.createTextNode(" | "));
+                const link = document.createElement("a");
+                link.href = url.trim();
+                link.target = "_blank";
+                link.rel = "noopener";
+                link.textContent = "View Certificate";
+                meta.appendChild(link);
+            }
+            item.append(heading, meta);
+            document.getElementById("certification-list").appendChild(item);
+            showToast("Certification added. You can edit its text directly.");
+        }
+
+        function addAchievement() {
+            const value = prompt("Enter your achievement:");
+            if (!value || !value.trim()) return;
+            const item = document.createElement("p");
+            item.className = "achievement";
+            item.contentEditable = "true";
+            item.textContent = value.trim();
+            document.getElementById("achievement-list").appendChild(item);
+            showToast("Achievement added. You can edit its text directly.");
         }
 
         // Print / PDF
